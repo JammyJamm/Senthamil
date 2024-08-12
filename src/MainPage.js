@@ -228,7 +228,7 @@ function MainPage() {
           Above 120 | Below 180
         </b>
       </p>
-      <div className="ui-nav">
+      <div className="ui-nav-app">
         <div className="card col-12 ui-select">
           <p>
             {selectBall == "" ? (
@@ -312,38 +312,40 @@ function MainPage() {
               onDoubleClick={handleTouchStart}
               data-value={val.id}
             >
-              <div className="top">
-                <p>{val.team2}</p>
-                <p className="result">
+              <div className="middle">
+                <label>{val.team2}</label>
+                <label className="result">
                   {val.result == "Win" ? (
-                    <label className="green">{val.result}</label>
+                    <span className="green">{val.result}</span>
                   ) : (
-                    <label className="red">{val.result}</label>
+                    <span className="red">{val.result}</span>
                   )}
-                </p>
-                <p>
+                </label>
+                <label>
                   <span>{val.league}</span>
-                </p>
+                </label>
               </div>
               <div className="bottom">
-                <p className="state">
-                  {val.state.trim() ? (
-                    <i className="note red">Negative</i>
-                  ) : (
-                    <i className="note">Positive</i>
-                  )}
-                </p>
-                <p>{val.match}</p>
-                <p>
+                <label>
+                  <p className="state">
+                    {val.state.trim() ? (
+                      <i className="note red">Negative</i>
+                    ) : (
+                      <i className="note">Positive</i>
+                    )}
+                  </p>
+                </label>
+                <label>{val.match}</label>
+                <label>
                   {val.percentage.split(",").map((value, i) => {
                     if (!value) return true;
                     return (
-                      <label className="green" key={i}>
+                      <span className="green" key={i}>
                         {value}
-                      </label>
+                      </span>
                     );
                   })}
-                </p>
+                </label>
               </div>
             </div>
 

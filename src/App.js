@@ -5,7 +5,7 @@ import SabiApp from "./SabiApp";
 export const App = ({ name }) => {
   return (
     <div className="app-container">
-      <Layout />
+      {/* <Layout /> */}
       <SabiApp />
     </div>
   );

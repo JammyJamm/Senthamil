@@ -302,23 +302,24 @@ table tbody tr.loss {
   border-radius: 100px;
 }
 /* Notification Starts */
-.ui-notific {
+.ui-notific,
+.ui-add {
   width: 100%;
   height: 100vh;
   background-color: white;
-  position: absolute;
+  position: fixed;
   left: 100%;
   top: 0px;
   transition: all 1s;
   z-index: 9;
 }
-.ui-notific {
+.ui-notific,
+.ui-add {
   display: none;
 }
-.ui-notific.open {
+.ui-notific.open,
+.ui-add.open {
   display: block;
-}
-.ui-notific.open {
   left: 0%;
   transition: all 1s;
 }
@@ -476,6 +477,9 @@ table tbody tr.loss {
 .main-card .card .bottom label,
 .main-card .card .middle label {
   width: 33.33%;
+}
+.main-card .card .bottom label:last-child {
+  justify-content: end;
 }
 .main-card .card p {
   margin: 0px;

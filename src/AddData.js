@@ -24,26 +24,19 @@ const AddData = () => {
       });
   };
   const handleClose = () => {
-    document.querySelector("#addWapper").setAttribute("class", "ui-add");
+    document.querySelector("#addWapper").setAttribute("class", "ui-addPlayer");
   };
   return (
-    <div className="ui-add open" id="addWapper">
-      <div className="content">
-        {/* <div className="cover-black">
-          <div className="close" onClick={handleClose}>
-            <i className="fa-solid fa-arrow-left"></i>
-          </div>
-          <b>Match</b>
-        </div> */}
-        <div className="cover">
-          <h2 className="title">Add Match</h2>
-          <div className="close" onClick={handleClose}>
-            <img src="https://jammyjamm.github.io/JSON_Data/back.svg" />
-          </div>
+    <div className="ui-addPlayer open" id="addWapper">
+      <div className="cover">
+        <h2 className="title">Add Match</h2>
+        <div className="close" onClick={handleClose}>
+          <img src="https://jammyjamm.github.io/JSON_Data/back.svg" />
         </div>
-        <div className="ui-add-data">
-          <div className="card">
-            <h5>Add New</h5>
+      </div>
+      <div className="content">
+        <div className="card">
+          <div className="ui-add-data">
             <div className="form-elements">
               <form id="addData" onSubmit={handleAddSubmit} className="row">
                 <div className="col-6 col-sm-6 col-md-4">

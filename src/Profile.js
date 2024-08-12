@@ -20,7 +20,9 @@ const Profile = () => {
     document.querySelector("#notification").setAttribute("class", "ui-notific");
   };
   const handleMatch = () => {
-    document.querySelector("#addWapper").setAttribute("class", "ui-add open");
+    document
+      .querySelector("#addWapper")
+      .setAttribute("class", "ui-addPlayer open");
   };
   // Get Data From Google fire base
 
@@ -47,8 +49,9 @@ const Profile = () => {
       </div>
       <div className="ui-notific" id="notification">
         <div className="cover">
+          <h2 class="title">Notification</h2>
           <div className="close" onClick={handleClose}>
-            <i className="fa-solid fa-arrow-left"></i>
+            <img src="https://jammyjamm.github.io/JSON_Data/back.svg" />
           </div>
         </div>
         <div className="content">

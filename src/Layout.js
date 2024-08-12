@@ -1,5 +1,4 @@
 import "./senthamil.css";
-import NavLayout from "./NavLayout";
 import AddPlayer from "./AddPlayer";
 import PlayerData from "./PlayerData";
 
