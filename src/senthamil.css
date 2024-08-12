@@ -414,7 +414,7 @@ table tbody tr.loss {
 .form-switch input:checked ~ label {
   left: 4px;
   transition: left 0.2s;
-  background-image: url("https://github.com/JammyJamm/JSON_Data/blob/main/fire2.png?raw=true") !important;
+  background-image: url("https://github.com/JammyJamm/JSON_Data/blob/main/fire.png?raw=true") !important;
 }
 .form-switch input:checked {
   background-color: rgb(231, 76, 60);

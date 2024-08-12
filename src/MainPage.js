@@ -218,7 +218,7 @@ function MainPage() {
   // Touch and hold - Update match list Ends //
   return (
     <div className="ui-mainpage ui-player-table">
-      <p className="card col-12 ui-note" style={{ marginTop: "46px" }}>
+      <p className="card col-12 ui-note" style={{ marginTop: "30px" }}>
         <b>
           {localStorage.getItem("GetData") == "true" ? (
             <i>Google - </i>

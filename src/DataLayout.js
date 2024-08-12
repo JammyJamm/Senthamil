@@ -5,7 +5,7 @@ import AddData from "./AddData";
 
 export default function DataLayout() {
   return (
-    <div className="ui-data-layout">
+    <div className="ui-data-layout main">
       <MainPage></MainPage>
       <UpdataForm></UpdataForm>
       <AddData></AddData>
