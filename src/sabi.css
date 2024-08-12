@@ -8,6 +8,7 @@
 .ui-match-nav {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 6px;
 }
 .ui-nav-app .btn-group {
   width: 100%;

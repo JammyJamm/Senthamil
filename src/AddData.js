@@ -27,7 +27,7 @@ const AddData = () => {
     document.querySelector("#addWapper").setAttribute("class", "ui-addPlayer");
   };
   return (
-    <div className="ui-addPlayer open" id="addWapper">
+    <div className="ui-addPlayer" id="addWapper">
       <div className="cover">
         <h2 className="title">Add Match</h2>
         <div className="close" onClick={handleClose}>
@@ -101,7 +101,10 @@ const AddData = () => {
                     required
                   />
                 </div>
-                <div className="d-grid btn-group justify-content-center col-12 mx-auto">
+                <div
+                  className="d-grid btn-group justify-content-center col-12 mx-auto"
+                  style={{ margin: "16px" }}
+                >
                   <button className="btn btn-primary blue-btn">Add Data</button>
                 </div>
               </form>

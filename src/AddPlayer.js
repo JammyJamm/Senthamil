@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import db from './FirbaseConfig';
-import { addDoc, collection } from '@firebase/firestore';
-import Spinner from './Spinner';
+import { useState } from "react";
+import db from "./FirbaseConfig";
+import { addDoc, collection } from "@firebase/firestore";
+import Spinner from "./Spinner";
 
 const AddPlayer = () => {
   const [load, setLoad] = useState(false);
   const handlePlayerScore = (e) => {
     e.preventDefault();
     setLoad(true);
-    const addForm = document.querySelector('#addPlayer');
+    const addForm = document.querySelector("#addPlayer");
     console.log(addForm.noteOverWideOne.checked);
-    const colRef = collection(db, 'Player');
+    const colRef = collection(db, "Player");
     addDoc(colRef, {
       year: addForm.year.value,
       vs: addForm.vs.value,
@@ -52,11 +52,11 @@ const AddPlayer = () => {
   };
   const handleClose = () => {
     document
-      .querySelector('#addPlayerWapper')
-      .setAttribute('class', 'ui-addPlayer');
+      .querySelector("#addPlayerWapper")
+      .setAttribute("class", "ui-addPlayer");
   };
   return (
-    <div className="ui-addPlayer open" id="addPlayerWapper">
+    <div className="ui-addPlayer" id="addPlayerWapper">
       <div className="cover">
         <h2 className="title">Add Player</h2>
         <div className="close" onClick={handleClose}>
@@ -65,7 +65,7 @@ const AddPlayer = () => {
       </div>
       <div className="content">
         <div className="card col-12">
-          {load ? <Spinner /> : ''}
+          {load ? <Spinner /> : ""}
           <form id="addPlayer" className="row" onSubmit={handlePlayerScore}>
             <div className="col-6 col-sm-6 col-md-4">
               <label className="form-label">Year</label>
@@ -213,7 +213,7 @@ const AddPlayer = () => {
                 <option value="4,4,1">4,4,1</option>
               </select>
             </div>
-            <div className="col-6 col-md-4" style={{ display: 'none' }}>
+            <div className="col-6 col-md-4" style={{ display: "none" }}>
               <div className="form-check">
                 <input type="checkbox" value="Over Wd 1" id="noteOverWideOne" />
                 <label className="form-check-label" htmlFor="noteOverWideOne">
@@ -256,7 +256,7 @@ const AddPlayer = () => {
               </div>
             </div>
 
-            <div className="col-6 col-md-4" style={{ display: 'none' }}>
+            <div className="col-6 col-md-4" style={{ display: "none" }}>
               <div className="form-check">
                 <input
                   type="checkbox"
@@ -321,7 +321,7 @@ const AddPlayer = () => {
                 </label>
               </div>
             </div>
-            <div className="form-check" style={{ display: 'none' }}>
+            <div className="form-check" style={{ display: "none" }}>
               <input type="checkbox" value="Wk" id="noteOverWicket" />
               <label className="form-check-label" htmlFor="noteOverWicket">
                 Wk
@@ -330,7 +330,7 @@ const AddPlayer = () => {
 
             <div
               className="d-grid btn-group justify-content-center col-6 mx-auto"
-              style={{ margin: '16px' }}
+              style={{ margin: "16px" }}
             >
               <button className="btn btn-primary">Add Player</button>
             </div>

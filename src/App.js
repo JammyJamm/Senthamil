@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import Layout from "./Layout";
 import SabiApp from "./SabiApp";
 export const App = ({ name }) => {
-  const [switchs, setSwitchs] = useState(true);
+  const [switchs, setSwitchs] = useState(false);
   const handelSwitch = () => {
     setSwitchs(!switchs);
   };
@@ -19,7 +19,7 @@ export const App = ({ name }) => {
           <label></label>
         </div>
       </div>
-      {switchs ? <Layout /> : <SabiApp />}
+      {switchs ? <SabiApp /> : <Layout />}
     </div>
   );
 };

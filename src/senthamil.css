@@ -221,7 +221,7 @@ table tbody tr.loss {
   background-image: url("https://github.com/JammyJamm/JSON_Data/blob/main/Background.png?raw=true");
   background-size: 100% auto;
   color: #fff;
-  padding: 26px 54px 0px 10px;
+  padding: 6px 46px 0px 10px;
   background-position: bottom;
 }
 .ui-topNav .image {
@@ -245,11 +245,11 @@ table tbody tr.loss {
   position: relative;
 }
 .ui-topNav .game {
+  width: 116%;
   overflow-y: hidden;
   overflow-x: auto;
   transform-origin: right top;
   white-space: nowrap;
-  margin-right: 45px;
 }
 .ui-topNav .game label {
   padding: 12px 10px;
@@ -606,7 +606,7 @@ table tbody tr.loss {
   display: flex;
   justify-content: end;
   position: fixed;
-  top: 30px;
+  top: 12px;
   right: 0px;
   z-index: 99;
 }
