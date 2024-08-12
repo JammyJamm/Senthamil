@@ -1,13 +1,19 @@
 {
   "files": {
     "main.css": "/Senthamil/static/css/main.d63a65cd.css",
-    "main.js": "/Senthamil/static/js/main.c6f78b02.js",
+    "main.js": "/Senthamil/static/js/main.5ecf2b54.js",
+    "static/media/logo_senthamil.png": "/Senthamil/static/media/logo_senthamil.c8b7e8bbfb1ea200092f.png",
+    "static/media/logo.png": "/Senthamil/static/media/logo.2695a315795361f12cb8.png",
     "index.html": "/Senthamil/index.html",
+    "static/media/notification.svg": "/Senthamil/static/media/notification.d978ca8dfaa3d1196d0042e3fe55595e.svg",
+    "static/media/add.svg": "/Senthamil/static/media/add.587029074ccbecca2d6d44140b51b354.svg",
+    "static/media/back.svg": "/Senthamil/static/media/back.3e378093a758ece35dff534791644cdf.svg",
+    "static/media/google.svg": "/Senthamil/static/media/google.b152d906a55299353c8180ac2d8a0324.svg",
     "main.d63a65cd.css.map": "/Senthamil/static/css/main.d63a65cd.css.map",
-    "main.c6f78b02.js.map": "/Senthamil/static/js/main.c6f78b02.js.map"
+    "main.5ecf2b54.js.map": "/Senthamil/static/js/main.5ecf2b54.js.map"
   },
   "entrypoints": [
     "static/css/main.d63a65cd.css",
-    "static/js/main.c6f78b02.js"
+    "static/js/main.5ecf2b54.js"
   ]
 }
