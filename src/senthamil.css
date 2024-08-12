@@ -30,6 +30,9 @@ h1 {
   border: 0px;
   background: rgb(226, 0, 1, 1);
 }
+.app-container {
+  position: relative;
+}
 .ui-player-table {
   margin-bottom: 56px;
 }
@@ -218,10 +221,8 @@ table tbody tr.loss {
   background-image: url("https://github.com/JammyJamm/JSON_Data/blob/main/Background.png?raw=true");
   background-size: 100% auto;
   color: #fff;
-  padding: 26px 10px 0px 10px;
+  padding: 26px 54px 0px 10px;
   background-position: bottom;
-  display: flex;
-  justify-content: space-between;
 }
 .ui-topNav .image {
   display: flex;
@@ -479,6 +480,7 @@ table tbody tr.loss {
   width: 33.33%;
 }
 .main-card .card .bottom label:last-child {
+  display: flex;
   justify-content: end;
 }
 .main-card .card p {
@@ -603,9 +605,10 @@ table tbody tr.loss {
   height: auto;
   display: flex;
   justify-content: end;
-  position: absolute;
-  bottom: 0px;
+  position: fixed;
+  top: 30px;
   right: 0px;
+  z-index: 99;
 }
 .show .text {
   color: #e20001;

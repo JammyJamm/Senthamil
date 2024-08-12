@@ -1,12 +1,25 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 
 import Layout from "./Layout";
 import SabiApp from "./SabiApp";
 export const App = ({ name }) => {
+  const [switchs, setSwitchs] = useState(true);
+  const handelSwitch = () => {
+    setSwitchs(!switchs);
+  };
   return (
     <div className="app-container">
-      {/* <Layout /> */}
-      <SabiApp />
+      <div class="show">
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            onClick={handelSwitch}
+          />
+          <label></label>
+        </div>
+      </div>
+      {switchs ? <Layout /> : <SabiApp />}
     </div>
   );
 };

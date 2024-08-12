@@ -487,11 +487,11 @@ const PlayerData = () => {
               IL
             </button>
           </div>
-          <div className="show">
+          {/* <div className="show">
             <div className="form-check form-switch">
-              {/* <label className="form-check-label text" htmlFor="showOnlyLoss">
+               <label className="form-check-label text" htmlFor="showOnlyLoss">
               Show Only
-            </label> */}
+            </label> 
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -500,7 +500,7 @@ const PlayerData = () => {
               />
               <label></label>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="card" style={{ display: "none" }}>
@@ -571,7 +571,7 @@ const PlayerData = () => {
           </div>
         </form>
       </div>
-      <div className="card col-12 ui-note">
+      <div className="card col-12 ui-note" style={{ marginTop: "68px" }}>
         {filterOutcome == "1,4" ? (
           <div className="note">
             <i>

@@ -27,7 +27,7 @@ const Profile = () => {
   // Get Data From Google fire base
 
   return (
-    <div className="ui-topNav">
+    <div className="ui-topNav ui-match-nav">
       <div className="profile">
         <div className="image">
           <img

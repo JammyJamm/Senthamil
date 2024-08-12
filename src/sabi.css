@@ -5,6 +5,10 @@
   bottom: 0px;
   z-index: 9;
 }
+.ui-match-nav {
+  display: flex;
+  justify-content: space-between;
+}
 .ui-nav-app .btn-group {
   width: 100%;
   background-color: #fff;
