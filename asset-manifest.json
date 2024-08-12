@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Senthamil/static/css/main.e0a0d7e0.css",
+    "main.css": "/Senthamil/static/css/main.678de853.css",
     "main.js": "/Senthamil/static/js/main.db96d3bd.js",
     "index.html": "/Senthamil/index.html",
-    "main.e0a0d7e0.css.map": "/Senthamil/static/css/main.e0a0d7e0.css.map",
+    "main.678de853.css.map": "/Senthamil/static/css/main.678de853.css.map",
     "main.db96d3bd.js.map": "/Senthamil/static/js/main.db96d3bd.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0a0d7e0.css",
+    "static/css/main.678de853.css",
     "static/js/main.db96d3bd.js"
   ]
 }
