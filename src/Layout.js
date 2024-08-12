@@ -1,8 +1,9 @@
-import NavLayout from './NavLayout';
-import AddPlayer from './AddPlayer';
-import PlayerData from './PlayerData';
+import "./senthamil.css";
+import NavLayout from "./NavLayout";
+import AddPlayer from "./AddPlayer";
+import PlayerData from "./PlayerData";
 
-const PlayerLayout = () => {
+const Layout = () => {
   return (
     <div className="main">
       <PlayerData />
@@ -10,4 +11,4 @@ const PlayerLayout = () => {
     </div>
   );
 };
-export default PlayerLayout;
+export default Layout;

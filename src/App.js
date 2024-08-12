@@ -1,11 +1,12 @@
-import { FC } from 'react';
+import { FC } from "react";
 
-import './style.css';
-import Layout from './Layout';
+import Layout from "./Layout";
+import SabiApp from "./SabiApp";
 export const App = ({ name }) => {
   return (
     <div className="app-container">
       <Layout />
+      <SabiApp />
     </div>
   );
 };
