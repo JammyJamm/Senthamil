@@ -1,7 +1,7 @@
 import React from "react";
 import { collection, addDoc } from "firebase/firestore";
 import db from "./FirbaseConfig";
-
+import back from "../src/assets/images/back.svg";
 const AddData = () => {
   const colRef = collection(db, "cricket");
   const handleAddSubmit = (e) => {
@@ -31,7 +31,7 @@ const AddData = () => {
       <div className="cover">
         <h2 className="title">Add Match</h2>
         <div className="close" onClick={handleClose}>
-          <img src="https://jammyjamm.github.io/JSON_Data/back.svg" />
+          <img src={back} />
         </div>
       </div>
       <div className="content">

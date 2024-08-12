@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import logo from "../src/assets/images/logo.png";
+import add from "../src/assets/images/add.svg";
+import notification from "../src/assets/images/notification.svg";
+import back from "../src/assets/images/back.svg";
 const Profile = () => {
   const handleNotification = () => {
     document
@@ -30,28 +34,19 @@ const Profile = () => {
     <div className="ui-topNav ui-match-nav">
       <div className="profile">
         <div className="image">
-          <img
-            src="https://jammyjamm.github.io/JSON_Data/logo_sabisenthu.png"
-            alt="logo"
-          />
+          <img src={logo} alt="logo" />
         </div>
       </div>
 
       <div className="more">
-        <img
-          src="https://jammyjamm.github.io/JSON_Data/add.svg"
-          onClick={handleMatch}
-        />
-        <img
-          src="https://jammyjamm.github.io/JSON_Data/notification.svg"
-          onClick={handleNotification}
-        />
+        <img src={add} onClick={handleMatch} />
+        <img src={notification} onClick={handleNotification} />
       </div>
       <div className="ui-notific" id="notification">
         <div className="cover">
           <h2 class="title">Notification</h2>
           <div className="close" onClick={handleClose}>
-            <img src="https://jammyjamm.github.io/JSON_Data/back.svg" />
+            <img src={back} />
           </div>
         </div>
         <div className="content">

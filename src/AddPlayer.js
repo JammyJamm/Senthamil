@@ -2,7 +2,7 @@ import { useState } from "react";
 import db from "./FirbaseConfig";
 import { addDoc, collection } from "@firebase/firestore";
 import Spinner from "./Spinner";
-
+import back from "../src/assets/images/back.svg";
 const AddPlayer = () => {
   const [load, setLoad] = useState(false);
   const handlePlayerScore = (e) => {
@@ -60,7 +60,7 @@ const AddPlayer = () => {
       <div className="cover">
         <h2 className="title">Add Player</h2>
         <div className="close" onClick={handleClose}>
-          <img src="https://jammyjamm.github.io/JSON_Data/back.svg" />
+          <img src={back} />
         </div>
       </div>
       <div className="content">

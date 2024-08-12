@@ -3,6 +3,11 @@ import AddPlayer from "./AddPlayer";
 import { collection, getDocs, query } from "@firebase/firestore";
 import db from "./FirbaseConfig";
 import Spinner from "./Spinner";
+import add from "../src/assets/images/add.svg";
+import logo from "../src/assets/images/logo_senthamil.png";
+import notification from "../src/assets/images/notification.svg";
+import back from "../src/assets/images/back.svg";
+import google from "../src/assets/images/google.svg";
 const PlayerData = () => {
   const [playerData, setPlayerData] = useState([]);
   const [detail, setDetail] = useState([]);
@@ -385,24 +390,15 @@ const PlayerData = () => {
       <div className="ui-topNav">
         <div className="image">
           <div className="profile">
-            <img
-              src="https://jammyjamm.github.io/JSON_Data/logo_senthamil.png"
-              alt="logo"
-            />
+            <img src={logo} alt="logo" />
           </div>
           <div className="more">
             {/* <img
               src="https://jammyjamm.github.io/JSON_Data/add.svg"
               onClick={handleNote}
             /> */}
-            <img
-              src="https://jammyjamm.github.io/JSON_Data/add.svg"
-              onClick={handleAddPlayer}
-            />
-            <img
-              src="https://jammyjamm.github.io/JSON_Data/notification.svg"
-              onClick={handleNotification}
-            />
+            <img src={add} onClick={handleAddPlayer} />
+            <img src={notification} onClick={handleNotification} />
             {/* <i className="fa-regular fa-bell" onClick={handleNotification}>
               More
             </i> */}
@@ -411,7 +407,7 @@ const PlayerData = () => {
             <div className="cover">
               <h2 className="title">Get Data </h2>
               <div className="close" onClick={handleClose}>
-                <img src="https://jammyjamm.github.io/JSON_Data/back.svg" />
+                <img src={back} />
                 {/* <i className="fa-solid fa-arrow-left"></i> */}
               </div>
             </div>
@@ -419,10 +415,7 @@ const PlayerData = () => {
               <div className="card">
                 <div className="block">
                   <div className="icon">
-                    <img
-                      src="https://jammyjamm.github.io/JSON_Data/google.svg"
-                      alt="google"
-                    />
+                    <img src={google} alt="google" />
                     <label>Get Data </label>
                   </div>
                   <div className="btn-switch">
@@ -1009,7 +1002,7 @@ const PlayerData = () => {
       <div className="main-card col-12 ui-playerNote">
         <div className="cover">
           <div className="close">
-            <img src="https://jammyjamm.github.io/JSON_Data/back.svg" />
+            <img src={back} />
           </div>
           <div className="content">
             <div className="card col-12">
