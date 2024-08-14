@@ -2,6 +2,7 @@ import React from "react";
 import { collection, addDoc } from "firebase/firestore";
 import db from "./FirbaseConfig";
 import back from "../src/assets/images/back.svg";
+import background from "../src/assets/images/Background.png";
 const AddData = () => {
   const colRef = collection(db, "cricket");
   const handleAddSubmit = (e) => {
@@ -28,7 +29,7 @@ const AddData = () => {
   };
   return (
     <div className="ui-addPlayer" id="addWapper">
-      <div className="cover">
+      <div className="cover" style={{ backgroundImage: `url(${background})` }}>
         <h2 className="title">Add Match</h2>
         <div className="close" onClick={handleClose}>
           <img src={back} />

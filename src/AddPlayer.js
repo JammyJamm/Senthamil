@@ -3,6 +3,7 @@ import db from "./FirbaseConfig";
 import { addDoc, collection } from "@firebase/firestore";
 import Spinner from "./Spinner";
 import back from "../src/assets/images/back.svg";
+import background from "../src/assets/images/Background.png";
 const AddPlayer = () => {
   const [load, setLoad] = useState(false);
   const handlePlayerScore = (e) => {
@@ -57,7 +58,7 @@ const AddPlayer = () => {
   };
   return (
     <div className="ui-addPlayer" id="addPlayerWapper">
-      <div className="cover">
+      <div className="cover" style={{ backgroundImage: `url(${background})` }}>
         <h2 className="title">Add Player</h2>
         <div className="close" onClick={handleClose}>
           <img src={back} />

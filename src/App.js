@@ -2,6 +2,8 @@ import { FC, useState } from "react";
 
 import Layout from "./Layout";
 import SabiApp from "./SabiApp";
+import fire from "../src/assets/images/fire.png";
+import fire1 from "../src/assets/images/fire1.png";
 export const App = ({ name }) => {
   const [switchs, setSwitchs] = useState(false);
   const handelSwitch = () => {
@@ -16,7 +18,13 @@ export const App = ({ name }) => {
             type="checkbox"
             onClick={handelSwitch}
           />
-          <label></label>
+          <label
+            style={
+              switchs == true
+                ? { backgroundImage: `url(${fire})` }
+                : { backgroundImage: `url(${fire1})` }
+            }
+          ></label>
         </div>
       </div>
       {switchs ? <SabiApp /> : <Layout />}

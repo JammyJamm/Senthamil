@@ -3,6 +3,7 @@ import logo from "../src/assets/images/logo.png";
 import add from "../src/assets/images/add.svg";
 import notification from "../src/assets/images/notification.svg";
 import back from "../src/assets/images/back.svg";
+import background from "../src/assets/images/Background.png";
 const Profile = () => {
   const handleNotification = () => {
     document
@@ -31,7 +32,10 @@ const Profile = () => {
   // Get Data From Google fire base
 
   return (
-    <div className="ui-topNav ui-match-nav">
+    <div
+      className="ui-topNav ui-match-nav"
+      style={{ backgroundImage: `url(${background})` }}
+    >
       <div className="profile">
         <div className="image">
           <img src={logo} alt="logo" />
@@ -43,7 +47,10 @@ const Profile = () => {
         <img src={notification} onClick={handleNotification} />
       </div>
       <div className="ui-notific" id="notification">
-        <div className="cover">
+        <div
+          className="cover"
+          style={{ backgroundImage: `url(${background})` }}
+        >
           <h2 class="title">Notification</h2>
           <div className="close" onClick={handleClose}>
             <img src={back} />

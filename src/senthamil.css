@@ -213,12 +213,7 @@ table tbody tr.loss {
   top: 0px;
   left: 0px;
   z-index: 9;
-  /* background-image: linear-gradient(
-    to bottom right,
-    rgb(255, 0, 0, 1),
-    rgb(203, 67, 53, 1)
-  ); */
-  background-image: url("https://github.com/JammyJamm/JSON_Data/blob/main/Background.png?raw=true");
+
   background-size: 100% auto;
   color: #fff;
   padding: 6px 46px 0px 10px;
@@ -329,7 +324,7 @@ table tbody tr.loss {
   height: 100px;
   background-color: #e20001;
   background: linear-gradient(to right, rgb(226, 0, 1, 1), rgb(203, 67, 53, 1));
-  background-image: url(https://github.com/JammyJamm/JSON_Data/blob/main/Background.png?raw=true);
+
   background-size: 100% auto;
   background-position: bottom;
 }
@@ -408,13 +403,12 @@ table tbody tr.loss {
   left: -8px;
   top: -8px;
   pointer-events: none;
-  background-image: url("https://github.com/JammyJamm/JSON_Data/blob/main/fire1.png?raw=true") !important;
+
   transition: left 0.2s;
 }
 .form-switch input:checked ~ label {
   left: 4px;
   transition: left 0.2s;
-  background-image: url("https://github.com/JammyJamm/JSON_Data/blob/main/fire.png?raw=true") !important;
 }
 .form-switch input:checked {
   background-color: rgb(231, 76, 60);
@@ -606,7 +600,7 @@ table tbody tr.loss {
   display: flex;
   justify-content: end;
   position: fixed;
-  top: 12px;
+  top: 15px;
   right: 0px;
   z-index: 99;
 }

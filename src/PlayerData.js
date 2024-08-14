@@ -8,6 +8,8 @@ import logo from "../src/assets/images/logo_senthamil.png";
 import notification from "../src/assets/images/notification.svg";
 import back from "../src/assets/images/back.svg";
 import google from "../src/assets/images/google.svg";
+import background from "../src/assets/images/Background.png";
+// import cover from "../src//assets/images/Background.png";
 const PlayerData = () => {
   const [playerData, setPlayerData] = useState([]);
   const [detail, setDetail] = useState([]);
@@ -387,7 +389,10 @@ const PlayerData = () => {
           441
         </button>
       </div>
-      <div className="ui-topNav">
+      <div
+        className="ui-topNav"
+        style={{ backgroundImage: `url(${background})` }}
+      >
         <div className="image">
           <div className="profile">
             <img src={logo} alt="logo" />
@@ -404,7 +409,10 @@ const PlayerData = () => {
             </i> */}
           </div>
           <div className="ui-notific" id="notification">
-            <div className="cover">
+            <div
+              className="cover"
+              style={{ backgroundImage: `url(${background})` }}
+            >
               <h2 className="title">Get Data </h2>
               <div className="close" onClick={handleClose}>
                 <img src={back} />
@@ -419,7 +427,12 @@ const PlayerData = () => {
                     <label>Get Data </label>
                   </div>
                   <div className="btn-switch">
-                    <label className="form-check form-switch">
+                    <label
+                      className="form-check form-switch"
+                      // style={{
+                      //   backgroundImage: `url(${background})`,
+                      // }}
+                    >
                       <input
                         className="form-check-input"
                         type="checkbox"
