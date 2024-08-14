@@ -176,11 +176,15 @@ table tbody tr.loss {
   bottom: 0px;
   z-index: 9;
   width: 100%;
-  background-color: #fff;
   left: 0px;
+
+  padding: 10px 16px 10px 16px;
+}
+.ui-nav .ui-block {
+  border-radius: 50px;
   display: flex;
   justify-content: space-around;
-  padding: 10px 16px 10px 16px;
+  background-color: #373737;
   box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2),
     0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 1px 0px rgba(0, 0, 0, 0.12);
 }
@@ -191,12 +195,11 @@ table tbody tr.loss {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-  /* border: 1px solid red; */
+  background-color: transparent;
   border: 0px;
-  /* border-radius: 100px; */
+
   font-size: 16px;
-  color: #989a9c;
+  color: #ffffff;
   font-weight: 500;
   padding: 10px 10px;
 }

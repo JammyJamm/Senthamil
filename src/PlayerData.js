@@ -345,49 +345,51 @@ const PlayerData = () => {
   return (
     <div className="ui-player">
       <div className="ui-nav">
-        <button
-          className={filterOutcome == "1,4" ? "selected" : ""}
-          value="1,4"
-          onClick={handleFilterOutcome}
-        >
-          {/* <img src="https://jammyjamm.github.io/JSON_Data/14.png" alt="14" /> */}
-          14
-        </button>
-        <button
-          className={filterOutcome == "4,1" ? "selected" : ""}
-          value="4,1"
-          onClick={handleFilterOutcome}
-        >
-          41
-        </button>
-        <button
-          className={filterOutcome == "1,6" ? "selected" : ""}
-          value="1,6"
-          onClick={handleFilterOutcome}
-        >
-          16
-        </button>
-        <button
-          className={filterOutcome == "6,1" ? "selected" : ""}
-          value="6,1"
-          onClick={handleFilterOutcome}
-        >
-          61
-        </button>
-        <button
-          className={filterOutcome == "1,4,4" ? "selected" : ""}
-          value="1,4,4"
-          onClick={handleFilterOutcome}
-        >
-          144
-        </button>
-        <button
-          className={filterOutcome == "4,4,1" ? "selected" : ""}
-          value="4,4,1"
-          onClick={handleFilterOutcome}
-        >
-          441
-        </button>
+        <div className="ui-block">
+          <button
+            className={filterOutcome == "1,4" ? "selected" : ""}
+            value="1,4"
+            onClick={handleFilterOutcome}
+          >
+            {/* <img src="https://jammyjamm.github.io/JSON_Data/14.png" alt="14" /> */}
+            14
+          </button>
+          <button
+            className={filterOutcome == "4,1" ? "selected" : ""}
+            value="4,1"
+            onClick={handleFilterOutcome}
+          >
+            41
+          </button>
+          <button
+            className={filterOutcome == "1,6" ? "selected" : ""}
+            value="1,6"
+            onClick={handleFilterOutcome}
+          >
+            16
+          </button>
+          <button
+            className={filterOutcome == "6,1" ? "selected" : ""}
+            value="6,1"
+            onClick={handleFilterOutcome}
+          >
+            61
+          </button>
+          <button
+            className={filterOutcome == "1,4,4" ? "selected" : ""}
+            value="1,4,4"
+            onClick={handleFilterOutcome}
+          >
+            144
+          </button>
+          <button
+            className={filterOutcome == "4,4,1" ? "selected" : ""}
+            value="4,4,1"
+            onClick={handleFilterOutcome}
+          >
+            441
+          </button>
+        </div>
       </div>
       <div
         className="ui-topNav"
