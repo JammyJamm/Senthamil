@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Senthamil/static/css/main.597f5052.css",
-    "main.js": "/Senthamil/static/js/main.c1340c4a.js",
+    "main.css": "/Senthamil/static/css/main.c63bda59.css",
+    "main.js": "/Senthamil/static/js/main.bca26ccb.js",
     "static/media/Background.png": "/Senthamil/static/media/Background.314195007230b531482c.png",
     "static/media/fire.png": "/Senthamil/static/media/fire.ca6f58e8fe4a83738fdb.png",
     "static/media/fire1.png": "/Senthamil/static/media/fire1.27267b60fde5323987ef.png",
@@ -12,11 +12,11 @@
     "static/media/add.svg": "/Senthamil/static/media/add.587029074ccbecca2d6d44140b51b354.svg",
     "static/media/back.svg": "/Senthamil/static/media/back.3e378093a758ece35dff534791644cdf.svg",
     "static/media/google.svg": "/Senthamil/static/media/google.b152d906a55299353c8180ac2d8a0324.svg",
-    "main.597f5052.css.map": "/Senthamil/static/css/main.597f5052.css.map",
-    "main.c1340c4a.js.map": "/Senthamil/static/js/main.c1340c4a.js.map"
+    "main.c63bda59.css.map": "/Senthamil/static/css/main.c63bda59.css.map",
+    "main.bca26ccb.js.map": "/Senthamil/static/js/main.bca26ccb.js.map"
   },
   "entrypoints": [
-    "static/css/main.597f5052.css",
-    "static/js/main.c1340c4a.js"
+    "static/css/main.c63bda59.css",
+    "static/js/main.bca26ccb.js"
   ]
 }
