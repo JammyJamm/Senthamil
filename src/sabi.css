@@ -46,12 +46,14 @@
 .ui-nav-app .ui-select {
   margin: 0px;
   border: 1px solid rgb(46, 64, 83, 0.2);
+  border-radius: 50px;
   background: linear-gradient(
     to right,
     rgb(178, 186, 187, 0.8),
     rgb(178, 186, 187, 0.8)
   );
   color: rgb(46, 64, 83);
+  box-shadow: none;
 }
 .ui-nav-app .ui-select p {
   margin: 0px;

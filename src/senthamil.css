@@ -177,35 +177,36 @@ table tbody tr.loss {
   z-index: 9;
   width: 100%;
   left: 0px;
-
-  padding: 10px 16px 10px 16px;
 }
 .ui-nav .ui-block {
   border-radius: 50px;
   display: flex;
   justify-content: space-around;
-  background-color: #373737;
+  background-color: #ffffff;
+  padding: 10px 16px 10px 16px;
   box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2),
     0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 1px 0px rgba(0, 0, 0, 0.12);
 }
 .ui-nav button {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   /* text-align: center; */
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
   border: 0px;
-
+  border-radius: 50px;
   font-size: 16px;
-  color: #ffffff;
+  color: rgb(255, 0, 0, 1);
   font-weight: 500;
   padding: 10px 10px;
+  border: 2px solid rgb(255, 0, 0, 1);
 }
 .ui-nav button.selected {
-  color: red;
-  border-bottom: 2px solid rgb(255, 0, 0, 1);
+  color: #ffffff;
+  background-color: rgb(255, 0, 0, 1);
+  /* border-bottom: 2px solid rgb(255, 0, 0, 1); */
 }
 .ui-nav button img {
   width: 70px;
