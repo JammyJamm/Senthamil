@@ -229,77 +229,79 @@ function MainPage() {
         </b>
       </p>
       <div className="ui-nav-app">
-        <div className="card col-12 ui-select">
-          <p>
-            {selectBall == "" ? (
-              <i>
-                <b>No Ball Selected</b>
-              </i>
-            ) : (
-              <b> {selectBall}</b>
-            )}
-            <div className="btn-switch">
-              <label className="form-check form-switch">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  onClick={handleAscending}
-                />
-              </label>
-              <button onClick={handleClearFilter}>Clear</button>
-            </div>
-          </p>
-        </div>
-        <div className="btn-group">
-          <button
-            className={filterOutcome == "0" ? "selected" : ""}
-            value="0"
-            onClick={handleFilterOutcome}
-          >
-            0
-          </button>
-          <button
-            className={filterOutcome == "1" ? "selected" : ""}
-            value="1"
-            onClick={handleFilterOutcome}
-          >
-            1
-          </button>
-          <button
-            className={filterOutcome == "4" ? "selected" : ""}
-            value="4"
-            onClick={handleFilterOutcome}
-          >
-            4
-          </button>
-          <button
-            className={filterOutcome == "6" ? "selected" : ""}
-            value="6"
-            onClick={handleFilterOutcome}
-          >
-            6
-          </button>
-          <button
-            className={filterOutcome == "W" ? "selected" : ""}
-            value="W"
-            onClick={handleFilterOutcome}
-          >
-            W
-          </button>
-          <button
-            className={filterOutcome == "Wd" ? "selected" : ""}
-            value="Wd"
-            onClick={handleFilterOutcome}
-          >
-            Wd
-          </button>
-          <button
-            className={filterOutcome == "lb" ? "selected" : ""}
-            value="lb"
-            onClick={handleFilterOutcome}
-          >
-            Lb
-          </button>
+        <div className="ui-nav">
+          <div className="card col-12 ui-select">
+            <p>
+              {selectBall == "" ? (
+                <i>
+                  <b>No Ball Selected</b>
+                </i>
+              ) : (
+                <b> {selectBall}</b>
+              )}
+              <div className="btn-switch">
+                <label className="form-check form-switch">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    onClick={handleAscending}
+                  />
+                </label>
+                <button onClick={handleClearFilter}>Clear</button>
+              </div>
+            </p>
+          </div>
+          <div className="ui-block">
+            <button
+              className={filterOutcome == "0" ? "selected" : ""}
+              value="0"
+              onClick={handleFilterOutcome}
+            >
+              0
+            </button>
+            <button
+              className={filterOutcome == "1" ? "selected" : ""}
+              value="1"
+              onClick={handleFilterOutcome}
+            >
+              1
+            </button>
+            <button
+              className={filterOutcome == "4" ? "selected" : ""}
+              value="4"
+              onClick={handleFilterOutcome}
+            >
+              4
+            </button>
+            <button
+              className={filterOutcome == "6" ? "selected" : ""}
+              value="6"
+              onClick={handleFilterOutcome}
+            >
+              6
+            </button>
+            <button
+              className={filterOutcome == "W" ? "selected" : ""}
+              value="W"
+              onClick={handleFilterOutcome}
+            >
+              W
+            </button>
+            <button
+              className={filterOutcome == "Wd" ? "selected" : ""}
+              value="Wd"
+              onClick={handleFilterOutcome}
+            >
+              Wd
+            </button>
+            <button
+              className={filterOutcome == "lb" ? "selected" : ""}
+              value="lb"
+              onClick={handleFilterOutcome}
+            >
+              Lb
+            </button>
+          </div>
         </div>
       </div>
 
