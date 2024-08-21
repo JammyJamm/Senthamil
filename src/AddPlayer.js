@@ -86,7 +86,7 @@ const AddPlayer = () => {
                 type="text"
                 name="vs"
                 className="form-control"
-                value="Major League"
+                value="Delhi League"
                 onChange={playerChange}
               />
             </div>
