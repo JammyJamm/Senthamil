@@ -183,13 +183,13 @@ table tbody tr.loss {
   display: flex;
   justify-content: space-around;
   background-color: #495057;
-  padding: 10px 16px 10px 16px;
+  padding: 6px 16px 6px 16px;
   box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2),
     0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 1px 0px rgba(0, 0, 0, 0.12);
 }
 .ui-nav button {
-  width: 36px;
-  height: 36px;
+  width: 26px;
+  height: 26px;
   /* text-align: center; */
   display: flex;
   justify-content: center;
@@ -197,9 +197,9 @@ table tbody tr.loss {
   background-color: transparent;
   border: 0px;
   border-radius: 50px;
-  font-size: 16px;
+  font-size: 12px;
   color: rgb(255, 255, 255);
-  font-weight: 500;
+  font-weight: 400;
   padding: 10px 10px;
   border: 1px solid rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 0.2);
