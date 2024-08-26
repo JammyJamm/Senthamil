@@ -179,11 +179,13 @@ table tbody tr.loss {
   left: 0px;
 }
 .ui-nav .ui-block {
-  border-radius: 50px;
+  /* border-radius: 50px; */
   display: flex;
   justify-content: space-around;
-  background-color: #495057;
-  padding: 6px 16px 6px 16px;
+  /* background-color: #495057; */
+  background-color: #fff;
+  border-top: 1px solid #dddddd;
+  padding: 10px 16px 10px 16px;
   box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2),
     0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 1px 0px rgba(0, 0, 0, 0.12);
 }
@@ -196,18 +198,18 @@ table tbody tr.loss {
   align-items: center;
   background-color: transparent;
   border: 0px;
-  border-radius: 50px;
-  font-size: 12px;
-  color: rgb(255, 255, 255);
+  /* border-radius: 50px; */
+  font-size: 16px;
+  color: #343434;
   font-weight: 400;
   padding: 10px 10px;
-  border: 1px solid rgb(255, 255, 255);
-  background-color: rgba(255, 255, 255, 0.2);
+  /* border: 1px solid rgb(255, 255, 255); */
+  /* background-color: rgba(255, 255, 255, 0.2); */
 }
 .ui-nav button.selected {
-  color: #495057;
-  background-color: rgb(255, 255, 255);
-  /* border-bottom: 2px solid rgb(255, 0, 0, 1); */
+  color: rgb(255, 0, 0, 1);
+  /* background-color: rgb(255, 255, 255); */
+  border-bottom: 2px solid rgb(255, 0, 0, 1);
 }
 .ui-nav button img {
   width: 70px;
