@@ -7,7 +7,7 @@ body {
   padding: 0px;
   font-family: system-ui, sans-serif;
   color: black;
-  background-color: #f3f7fb;
+  background-color: #fff;
 }
 .main {
   padding: 1rem;
@@ -458,9 +458,10 @@ table tbody tr.loss {
 /* Add Player Ends */
 /* Main Card Starts */
 .main-card .card {
-  /* box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 1px 0px rgba(0, 0, 0, 0.12); */
-  box-shadow: none;
+  box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
+  /* box-shadow: none; */
+  background-color: #fff;
   border: 1px solid #e6e6e6;
 }
 .main-card .card .top,
