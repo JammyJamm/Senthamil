@@ -1,4 +1,7 @@
-* {
+*,
+html {
+  padding: 0px;
+  margin: 0px;
   box-sizing: border-box;
 }
 
@@ -221,7 +224,7 @@ table tbody tr.loss {
   left: 0px;
   z-index: 9;
 
-  background-size: 100% auto;
+  background-size: 101% auto;
   color: #fff;
   padding: 6px 46px 0px 10px;
   background-position: bottom;
