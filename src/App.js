@@ -1,33 +1,22 @@
-import { FC, useState } from "react";
-
-import Layout from "./Layout";
-import SabiApp from "./SabiApp";
-import fire from "../src/assets/images/fire.png";
-import fire1 from "../src/assets/images/fire1.png";
-export const App = ({ name }) => {
-  const [switchs, setSwitchs] = useState(false);
-  const handelSwitch = () => {
-    setSwitchs(!switchs);
-  };
+import { Main } from "./Main";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RouterNav from "./RouterNav";
+import { Laddu } from "./Laddu";
+import { Sabi } from "./Sabi";
+import { LadduAddData } from "./LadduAddData";
+export const App = () => {
   return (
-    <div className="app-container">
-      <div class="show">
-        <div class="form-check form-switch">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            onClick={handelSwitch}
-          />
-          <label
-            style={
-              switchs == true
-                ? { backgroundImage: `url(${fire})` }
-                : { backgroundImage: `url(${fire1})` }
-            }
-          ></label>
-        </div>
-      </div>
-      {switchs ? <SabiApp /> : <Layout />}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<RouterNav />}>
+          <Route index element={<Main />} />
+          <Route path="senthamil" element={<Main />} />
+          <Route path="sabi" element={<Sabi />} />
+          <Route path="laddu" element={<Laddu />} />
+          <Route path="ladduAddData" element={<LadduAddData />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };

@@ -449,8 +449,14 @@ table tbody tr.loss {
 .ui-addPlayer.open {
   display: block;
 }
-.ui-addPlayer .content {
+
+.ui-addPlayer .content,
+.ui-addLadduMatch .content {
   padding: 10px 30px;
+}
+.ui-addLadduMatch .card {
+  position: relative;
+  top: -36px;
 }
 .ui-addPlayer .card {
   height: 550px;
@@ -622,3 +628,26 @@ table tbody tr.loss {
   margin-left: 10px;
 }
 /* Main Card Ends */
+
+/* Nav links Starts */
+nav {
+  position: fixed;
+  bottom: 46px;
+  z-index: 999;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px #d1d2d3;
+  border-radius: 5px;
+  left: 0px;
+  padding: 6px 6px;
+}
+nav ul {
+  padding: 0px;
+  margin: 0px;
+}
+nav li {
+  list-style: none;
+}
+nav img {
+  width: 36px;
+}
+/* Nav links Ends */
