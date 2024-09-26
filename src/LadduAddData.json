@@ -1,0 +1,32 @@
+[
+  {
+    "league": "Caribbean Premier League",
+    "player1Name": "Bishop",
+    "player1Role": "player",
+    "player1Score": 1,
+    "player2Name": "Fakar",
+    "player2Role": "player",
+    "player2Score": 43,
+    "result": "22,18(wk),50*,24"
+  },
+  {
+    "league": "Caribbean Premier League",
+    "player1Name": "Gurbaz",
+    "player1Role": "wk",
+    "player1Score": 20,
+    "player2Name": "Motie",
+    "player2Role": "player",
+    "player2Score": 6,
+    "result": "41,19,9(wk),10,32,20*,6*"
+  },
+  {
+    "league": "Caribbean Premier League",
+    "player1Name": "Bishop",
+    "player1Role": "player",
+    "player1Score": 9,
+    "player2Name": "Motie",
+    "player2Role": "player",
+    "player2Score": 40,
+    "result": "37,10(wk),10,40(r),11*"
+  }
+]

@@ -4,11 +4,13 @@ import db from "./FirbaseConfig";
 import back from "../src/assets/images/back.svg";
 import background from "../src/assets/images/Background.png";
 import { Link } from "react-router-dom";
-export const LadduAddData = () => {
-  const colRef = collection(db, "player");
+export const LadduAdd = () => {
+  // const colRef = collection(db, "player");
   const handleLadduAddMatch = (e) => {
     e.preventDefault();
     const addForm = document.querySelector("#addLadduData");
+
+    const colRef = collection(db, "jammy");
     addDoc(colRef, {
       //   player1Name: addForm.player1Name.value,
       //   player1Role: addForm.player1Role.value,
@@ -17,7 +19,7 @@ export const LadduAddData = () => {
       //   player2Role: addForm.player2Role.value,
       //   player2Score: addForm.player2Score.value,
       league: addForm.league.value,
-      result: addForm.result.value,
+      result: addForm.result.value,,nbvc 
     })
       .then((response) => {
         alert("Added");

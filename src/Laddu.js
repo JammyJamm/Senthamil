@@ -1,41 +1,135 @@
 import logo from "../src/assets/images/logo.png";
 import { Link } from "react-router-dom";
 import background from "../src/assets/images/Background.png";
+import getData from "./LadduAddData.json";
+import { useState } from "react";
 export const Laddu = () => {
+  const [data, setData] = useState(getData);
+  const [filterData, setFilterData] = useState(getData);
+
+  const handleNav = (role) => {
+    setFilterData(
+      data.filter((list) => {
+        return (
+          list.player1Role == role ||
+          (list.player2Role == role && list.player1Role == "player")
+        );
+      })
+    );
+  };
   return (
-    <div
-      className="ui-topNav ui-match-nav"
-      style={{ backgroundImage: `url(${background})` }}
-    >
-      <div className="profile">
-        <div className="image">
-          <img src={logo} alt="logo" />
+    <>
+      <div
+        className="ui-topNav ui-match-nav"
+        style={{ backgroundImage: `url(${background})` }}
+      >
+        <div className="profile">
+          <div className="image">
+            <img src={logo} alt="logo" />
+          </div>
+        </div>
+        <div class="more">
+          <Link to="/ladduAddData">
+            <img src="/Senthamil/static/media/add.587029074ccbecca2d6d44140b51b354.svg" />
+          </Link>
+        </div>
+
+        <div className="ui-nav">
+          <div className="ui-block">
+            <button className={""} onClick={() => handleNav("player")}>
+              Players
+            </button>
+            <button className={""} onClick={() => handleNav("wk")}>
+              Wicket Keeper
+            </button>
+            <button className={""} onClick={() => handleNav("c")}>
+              Captain
+            </button>
+          </div>
         </div>
       </div>
-      <div class="more">
-        <Link to="/ladduAddData">
-          <img src="/Senthamil/static/media/add.587029074ccbecca2d6d44140b51b354.svg" />
-        </Link>
-      </div>
-      <div className="ui-nav">
-        <div className="ui-block">
-          <button className={""} value="wkHigh_player" onClick={""}>
-            ^WK-P
-          </button>
-          <button className={""} value="wk_playerHigh" onClick={""}>
-            WK-P^
-          </button>
-          <button className={""} value="captainHigh_player" onClick={""}>
-            ^C-P
-          </button>
-          <button className={""} value="captain_playerHigh" onClick={""}>
-            C-P^
-          </button>
-          <button className={""} value="playerHigh_player" onClick={""}>
-            C-P^
-          </button>
+      <div className="main">
+        <p className="card col-12 ui-note" style={{ marginTop: "38px" }}>
+          <b>Note</b>
+        </p>
+        <div className="main-card">
+          {filterData.map((val, id) => {
+            return (
+              <div className="card" key={id} data-value={val.id}>
+                <div className="middle">
+                  <label>{val.player1Score}</label>
+                  <label className="result">
+                    {/* {val.result == "Win" ? (
+                    <span className="green">{val.result}</span>
+                  ) : (
+                    <span className="red">{val.result}</span>
+                  )} */}
+
+                    {val.result
+                      .trim()
+                      .split(",")
+                      .map((score) => {
+                        return parseInt(score.match(/\d+/g)) <= 27 ? (
+                          <span
+                            className="green"
+                            style={{ marginRight: "10px" }}
+                          >
+                            {score}
+                          </span>
+                        ) : (
+                          <span className="red" style={{ marginRight: "10px" }}>
+                            {score}
+                          </span>
+                        );
+
+                        // <span
+                        //   key={score}
+                        //   className={num.length > 1 ? "green" : ""}
+                        // ></span>
+                      })}
+                  </label>
+                  <label>
+                    <span>{val.player2Score}</span>
+                  </label>
+                </div>
+                <div className="bottom">
+                  <label>
+                    <p className="state">
+                      {/* {val.state.trim() ? (
+                      <i className="note red">Negative</i>
+                    ) : (
+                      <i className="note">Positive</i>
+                    )} */}
+                      <i className="note "> {val.player1Name} </i>
+                      <i className="note red">{val.player1Role}</i>
+                    </p>
+                  </label>
+                  <label>{val.league}</label>
+                  <label>
+                    {/* {val.percentage.split(",").map((value, i) => {
+                    if (!value) return true;
+                    return (
+                      <span className="green" key={i}>
+                        {value}
+                      </span>
+                    );
+                  })} */}
+                    <p className="state">
+                      {/* {val.state.trim() ? (
+                      <i className="note red">Negative</i>
+                    ) : (
+                      <i className="note">Positive</i>
+                    )} */}
+                      <i className="note red">{val.player2Role}</i>{" "}
+                      <i className="note "> {val.player2Name} </i>
+                    </p>
+                  </label>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-    </div>
+    </>
   );
 };
