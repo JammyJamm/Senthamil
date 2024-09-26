@@ -2,12 +2,13 @@ import logo from "../src/assets/images/logo.png";
 import { Link } from "react-router-dom";
 import background from "../src/assets/images/Background.png";
 import getData from "./LadduAddData.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export const Laddu = () => {
   const [data, setData] = useState(getData);
   const [filterData, setFilterData] = useState(getData);
-
+  const [filterOutcome, setFilterOutcome] = useState("player");
   const handleNav = (role) => {
+    setFilterOutcome(role);
     setFilterData(
       data.filter((list) => {
         return (
@@ -17,6 +18,9 @@ export const Laddu = () => {
       })
     );
   };
+  useEffect(() => {
+    handleNav("player");
+  }, []);
   return (
     <>
       <div
@@ -36,13 +40,23 @@ export const Laddu = () => {
 
         <div className="ui-nav">
           <div className="ui-block">
-            <button className={""} onClick={() => handleNav("player")}>
+            <button
+              className={filterOutcome == "player" ? "selected" : ""}
+              onClick={() => handleNav("player")}
+            >
               Players
             </button>
-            <button className={""} onClick={() => handleNav("wk")}>
+            <button
+              className={filterOutcome == "wk" ? "selected" : ""}
+              onClick={() => handleNav("wk")}
+              style={{ textWrap: "nowrap" }}
+            >
               Wicket Keeper
             </button>
-            <button className={""} onClick={() => handleNav("c")}>
+            <button
+              className={filterOutcome == "c" ? "selected" : ""}
+              onClick={() => handleNav("c")}
+            >
               Captain
             </button>
           </div>
@@ -58,7 +72,7 @@ export const Laddu = () => {
               <div className="card" key={id} data-value={val.id}>
                 <div className="middle">
                   <label>{val.player1Score}</label>
-                  <label className="result">
+                  <label className="result" style={{ textWrap: "nowrap" }}>
                     {/* {val.result == "Win" ? (
                     <span className="green">{val.result}</span>
                   ) : (
@@ -72,7 +86,7 @@ export const Laddu = () => {
                         return parseInt(score.match(/\d+/g)) <= 27 ? (
                           <span
                             className="green"
-                            style={{ marginRight: "10px" }}
+                            style={{ marginRight: "2px" }}
                           >
                             {score}
                           </span>
