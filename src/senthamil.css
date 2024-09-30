@@ -522,13 +522,14 @@ table tbody tr.loss {
   color: rgb(178, 186, 187);
   position: absolute;
   right: 0px;
+  padding-left: 10px;
   /* background-color: #fff; */
 }
 .main-card .card .top label:nth-child(2) span {
   content: " ";
   position: absolute;
   right: 0;
-  width: 50px;
+  width: auto;
   height: 100%;
   border-style: solid;
   border-width: 0px 0px 30px 15px;

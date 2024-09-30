@@ -33,7 +33,7 @@ export const Laddu = () => {
           </div>
         </div>
         <div class="more">
-          <Link to="/ladduAddData">
+          <Link to="/ladduAdd">
             <img src="/Senthamil/static/media/add.587029074ccbecca2d6d44140b51b354.svg" />
           </Link>
         </div>
@@ -70,8 +70,24 @@ export const Laddu = () => {
           {filterData.map((val, id) => {
             return (
               <div className="card" key={id} data-value={val.id}>
+                <div className="top">
+                  <label>{val.league}</label>
+                  <label>
+                    <span>{val.league}</span>
+                  </label>
+                </div>
                 <div className="middle">
-                  <label>{val.player1Score}</label>
+                  <label
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textAlign: "start",
+                    }}
+                  >
+                    <b> {val.player2Name} </b>
+                    <span>{val.player1Score}</span>
+                  </label>
+
                   <label className="result" style={{ textWrap: "nowrap" }}>
                     {/* {val.result == "Win" ? (
                     <span className="green">{val.result}</span>
@@ -91,7 +107,7 @@ export const Laddu = () => {
                             {score}
                           </span>
                         ) : (
-                          <span className="red" style={{ marginRight: "10px" }}>
+                          <span className="red" style={{ marginRight: "2px" }}>
                             {score}
                           </span>
                         );
@@ -102,7 +118,8 @@ export const Laddu = () => {
                         // ></span>
                       })}
                   </label>
-                  <label>
+                  <label style={{ flexDirection: "column", textAlign: "end" }}>
+                    <b> {val.player2Name} </b>
                     <span>{val.player2Score}</span>
                   </label>
                 </div>
@@ -114,12 +131,12 @@ export const Laddu = () => {
                     ) : (
                       <i className="note">Positive</i>
                     )} */}
-                      <i className="note "> {val.player1Name} </i>
+
                       <i className="note red">{val.player1Role}</i>
                     </p>
                   </label>
-                  <label>{val.league}</label>
-                  <label>
+
+                  <label style={{ justifyContent: "end" }}>
                     {/* {val.percentage.split(",").map((value, i) => {
                     if (!value) return true;
                     return (
@@ -135,7 +152,6 @@ export const Laddu = () => {
                       <i className="note">Positive</i>
                     )} */}
                       <i className="note red">{val.player2Role}</i>{" "}
-                      <i className="note "> {val.player2Name} </i>
                     </p>
                   </label>
                 </div>

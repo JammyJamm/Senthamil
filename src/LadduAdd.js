@@ -19,7 +19,7 @@ export const LadduAdd = () => {
       //   player2Role: addForm.player2Role.value,
       //   player2Score: addForm.player2Score.value,
       league: addForm.league.value,
-      result: addForm.result.value,,nbvc 
+      result: addForm.result.value,
     })
       .then((response) => {
         alert("Added");

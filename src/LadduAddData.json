@@ -28,5 +28,15 @@
     "player2Role": "player",
     "player2Score": 40,
     "result": "37,10(wk),10,40(r),11*"
+  },
+  {
+    "league": "Caribbean Premier League",
+    "player1Name": "Bishop",
+    "player1Role": "player",
+    "player1Score": 9,
+    "player2Name": "Motie",
+    "player2Role": "player",
+    "player2Score": 40,
+    "result": "37,10(wk),10,40(r),11*"
   }
 ]
