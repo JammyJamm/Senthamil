@@ -3,10 +3,30 @@ import { Link } from "react-router-dom";
 import background from "../src/assets/images/Background.png";
 import getData from "./LadduAddData.json";
 import { useEffect, useState } from "react";
+import batter from "../src/assets/images/batter.svg";
 export const Laddu = () => {
   const [data, setData] = useState(getData);
+  const [detail, setDetail] = useState("");
   const [filterData, setFilterData] = useState(getData);
   const [filterOutcome, setFilterOutcome] = useState("player");
+  // Get Data
+  // Fetching Data Ends //
+  const userData = async () => {
+    const q = query(collection(db, "jammy"));
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+      //
+      ...doc.data(),
+    }));
+    setDetail(data);
+    // console.log(data);
+  };
+  useEffect(() => {
+    userData();
+  }, []);
+
   const handleNav = (role) => {
     setFilterOutcome(role);
     setFilterData(
@@ -43,21 +63,23 @@ export const Laddu = () => {
             <button
               className={filterOutcome == "player" ? "selected" : ""}
               onClick={() => handleNav("player")}
+              style={{ padding: "0px" }}
             >
-              Players
+              <label className="batter"></label>
             </button>
             <button
               className={filterOutcome == "wk" ? "selected" : ""}
               onClick={() => handleNav("wk")}
-              style={{ textWrap: "nowrap" }}
+              style={{ padding: "0px" }}
             >
-              Wicket Keeper
+              <label className="keeper"></label>
             </button>
             <button
               className={filterOutcome == "c" ? "selected" : ""}
               onClick={() => handleNav("c")}
+              style={{ padding: "0px" }}
             >
-              Captain
+              <label className="captain"></label>
             </button>
           </div>
         </div>
@@ -71,10 +93,18 @@ export const Laddu = () => {
             return (
               <div className="card" key={id} data-value={val.id}>
                 <div className="top">
-                  <label>{val.league}</label>
-                  <label>
-                    <span>{val.league}</span>
+                  <label
+                    style={{
+                      whiteSpace: "nowrap",
+                      textOverflow: "ellipsis",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {val.league}
                   </label>
+                  {/* <label>
+                    <span>{val.league}</span>
+                  </label> */}
                 </div>
                 <div className="middle">
                   <label
@@ -84,7 +114,14 @@ export const Laddu = () => {
                       textAlign: "start",
                     }}
                   >
-                    <b> {val.player2Name} </b>
+                    <b
+                      style={{
+                        fontWeight: "500",
+                        color: "rgba(65, 65, 65,0.6)",
+                      }}
+                    >
+                      {val.player2Name}{" "}
+                    </b>
                     <span>{val.player1Score}</span>
                   </label>
 
@@ -119,7 +156,15 @@ export const Laddu = () => {
                       })}
                   </label>
                   <label style={{ flexDirection: "column", textAlign: "end" }}>
-                    <b> {val.player2Name} </b>
+                    <b
+                      style={{
+                        fontWeight: "500",
+                        color: "rgba(65, 65, 65,0.6)",
+                      }}
+                    >
+                      {" "}
+                      {val.player2Name}{" "}
+                    </b>
                     <span>{val.player2Score}</span>
                   </label>
                 </div>

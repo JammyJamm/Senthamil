@@ -10,14 +10,14 @@ export const LadduAdd = () => {
     e.preventDefault();
     const addForm = document.querySelector("#addLadduData");
 
-    const colRef = collection(db, "jammy");
+    const colRef = collection(db, "Laddu");
     addDoc(colRef, {
-      //   player1Name: addForm.player1Name.value,
-      //   player1Role: addForm.player1Role.value,
-      //   player1Score: addForm.player1Score.value,
-      //   player2Name: addForm.player2Name.value,
-      //   player2Role: addForm.player2Role.value,
-      //   player2Score: addForm.player2Score.value,
+      player1Name: addForm.player1Name.value,
+      player1Role: addForm.player1Role.value,
+      player1Score: addForm.player1Score.value,
+      player2Name: addForm.player2Name.value,
+      player2Role: addForm.player2Role.value,
+      player2Score: addForm.player2Score.value,
       league: addForm.league.value,
       result: addForm.result.value,
     })
@@ -27,6 +27,9 @@ export const LadduAdd = () => {
       .catch((error) => {
         console.log(error.message);
       });
+  };
+  const handleChange = (e) => {
+    return e.target.value;
   };
   return (
     <div className="ui-addLadduMatch" id="addWapper">
@@ -53,6 +56,7 @@ export const LadduAdd = () => {
                     type="text"
                     className="form-control"
                     name="player1Name"
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -62,6 +66,7 @@ export const LadduAdd = () => {
                     type="text"
                     className="form-control"
                     name="player1Role"
+                    onChange={handleChange}
                     required
                   >
                     <option value="wk">Wicket Keeper</option>
@@ -75,6 +80,7 @@ export const LadduAdd = () => {
                     type="text"
                     className="form-control"
                     name="player1Score"
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -84,6 +90,7 @@ export const LadduAdd = () => {
                     type="text"
                     className="form-control"
                     name="player2Name"
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -93,6 +100,7 @@ export const LadduAdd = () => {
                     type="text"
                     className="form-control"
                     name="player2Role"
+                    onChange={handleChange}
                     required
                   >
                     <option value="wk">Wicket Keeper</option>
@@ -106,6 +114,7 @@ export const LadduAdd = () => {
                     type="text"
                     className="form-control"
                     name="player2Score"
+                    onChange={handleChange}
                     required
                   />
                 </div>
@@ -116,6 +125,8 @@ export const LadduAdd = () => {
                     className="form-control"
                     name="league"
                     required
+                    value={"cpl"}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="col-6 col-sm-6 col-md-4">
@@ -124,6 +135,7 @@ export const LadduAdd = () => {
                     type="text"
                     className="form-control"
                     name="result"
+                    onChange={handleChange}
                     required
                   />
                 </div>

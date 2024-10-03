@@ -651,4 +651,28 @@ nav li {
 nav img {
   width: 36px;
 }
+.batter {
+  background-image: url("./assets/images/batter.svg");
+  width: 100%; /* Set dimensions */
+  height: 100%; /* Set dimensions */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.keeper {
+  background-image: url("./assets/images/keeper.svg");
+  width: 100%; /* Set dimensions */
+  height: 100%; /* Set dimensions */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.captain {
+  background-image: url("./assets/images/captain.svg");
+  width: 100%; /* Set dimensions */
+  height: 100%; /* Set dimensions */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 /* Nav links Ends */
