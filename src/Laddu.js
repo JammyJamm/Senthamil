@@ -1,45 +1,75 @@
 import logo from "../src/assets/images/logo.png";
 import { Link } from "react-router-dom";
 import background from "../src/assets/images/Background.png";
-import getData from "./LadduAddData.json";
+import getdata from "./LadduAddData.json";
 import { useEffect, useState } from "react";
 import batter from "../src/assets/images/batter.svg";
+import { collection, getDocs, query } from "@firebase/firestore";
+import db from "./FirbaseConfig";
 export const Laddu = () => {
-  const [data, setData] = useState(getData);
-  const [detail, setDetail] = useState("");
-  const [filterData, setFilterData] = useState(getData);
-  const [filterOutcome, setFilterOutcome] = useState("player");
+  const [data, setData] = useState([]);
+  const [detail, setDetail] = useState([]);
+  const [filterData, setFilterData] = useState(detail);
+  const [filterOutcome, setFilterOutcome] = useState("PLAYER");
+  const [filterScore, setFilterScore] = useState(0);
   // Get Data
   // Fetching Data Ends //
-  const userData = async () => {
-    const q = query(collection(db, "jammy"));
-    const querySnapshot = await getDocs(q);
-    const data = querySnapshot.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-      //
-      ...doc.data(),
-    }));
-    setDetail(data);
-    // console.log(data);
-  };
+  // const userData = async () => {
+  //   const q = query(collection(db, "Laddu"));
+  //   const querySnapshot = await getDocs(q);
+  //   const data = querySnapshot.docs.map((doc) => ({
+  //     ...doc.data(),
+  //     id: doc.id,
+  //     //
+  //     ...doc.data(),
+  //   }));
+  //   setDetail(data);
+  //   console.log(data);
+  // };
+  // useEffect(() => {
+  //   userData();
+  // }, []);
   useEffect(() => {
-    userData();
-  }, []);
-
+    setData(getdata);
+  }, [getdata]);
   const handleNav = (role) => {
     setFilterOutcome(role);
-    setFilterData(
-      data.filter((list) => {
-        return (
-          list.player1Role == role ||
-          (list.player2Role == role && list.player1Role == "player")
-        );
-      })
-    );
+    if (role == "PLAYER") {
+      setFilterScore(27);
+      setFilterData(
+        data.filter((list) => {
+          return (
+            list.player2Role.toUpperCase() == "PLAYER" &&
+            list.player1Role.toUpperCase() == "PLAYER"
+          );
+        })
+      );
+    }
+    if (role == "CAPTAIN") {
+      setFilterScore(37);
+      setFilterData(
+        data.filter((list) => {
+          return (
+            list.player2Role.toUpperCase() == "CAPTAIN" ||
+            list.player1Role.toUpperCase() == "CAPTAIN"
+          );
+        })
+      );
+    }
+    if (role == "WK") {
+      setFilterScore(37);
+      setFilterData(
+        data.filter((list) => {
+          return (
+            list.player2Role.toUpperCase() == "WK" ||
+            list.player1Role.toUpperCase() == "WK"
+          );
+        })
+      );
+    }
   };
   useEffect(() => {
-    handleNav("player");
+    handleNav("PLAYER");
   }, []);
   return (
     <>
@@ -61,22 +91,22 @@ export const Laddu = () => {
         <div className="ui-nav">
           <div className="ui-block">
             <button
-              className={filterOutcome == "player" ? "selected" : ""}
-              onClick={() => handleNav("player")}
+              className={filterOutcome == "PLAYER" ? "selected" : ""}
+              onClick={() => handleNav("PLAYER")}
               style={{ padding: "0px" }}
             >
               <label className="batter"></label>
             </button>
             <button
-              className={filterOutcome == "wk" ? "selected" : ""}
-              onClick={() => handleNav("wk")}
+              className={filterOutcome == "WK" ? "selected" : ""}
+              onClick={() => handleNav("WK")}
               style={{ padding: "0px" }}
             >
               <label className="keeper"></label>
             </button>
             <button
-              className={filterOutcome == "c" ? "selected" : ""}
-              onClick={() => handleNav("c")}
+              className={filterOutcome == "CAPTAIN" ? "selected" : ""}
+              onClick={() => handleNav("CAPTAIN")}
               style={{ padding: "0px" }}
             >
               <label className="captain"></label>
@@ -89,7 +119,7 @@ export const Laddu = () => {
           <b>Note</b>
         </p>
         <div className="main-card">
-          {filterData.map((val, id) => {
+          {filterData?.map((val, id) => {
             return (
               <div className="card" key={id} data-value={val.id}>
                 <div className="top">
@@ -120,7 +150,7 @@ export const Laddu = () => {
                         color: "rgba(65, 65, 65,0.6)",
                       }}
                     >
-                      {val.player2Name}{" "}
+                      {val.player1Name}{" "}
                     </b>
                     <span>{val.player1Score}</span>
                   </label>
@@ -136,13 +166,22 @@ export const Laddu = () => {
                       .trim()
                       .split(",")
                       .map((score) => {
-                        return parseInt(score.match(/\d+/g)) <= 27 ? (
-                          <span
-                            className="green"
-                            style={{ marginRight: "2px" }}
-                          >
-                            {score}
-                          </span>
+                        return parseInt(score.match(/\d+/g)) <= filterScore ? (
+                          parseInt(score.match(/\d+/g)) <= filterScore - 15 ? (
+                            <span
+                              className="blue"
+                              style={{ marginRight: "2px" }}
+                            >
+                              {score}
+                            </span>
+                          ) : (
+                            <span
+                              className="green"
+                              style={{ marginRight: "2px" }}
+                            >
+                              {score}
+                            </span>
+                          )
                         ) : (
                           <span className="red" style={{ marginRight: "2px" }}>
                             {score}
@@ -176,8 +215,11 @@ export const Laddu = () => {
                     ) : (
                       <i className="note">Positive</i>
                     )} */}
-
-                      <i className="note red">{val.player1Role}</i>
+                      {val.player1Role.toUpperCase() == "PLAYER" ? (
+                        <i className="note">{val.player1Role}</i>
+                      ) : (
+                        <i className="note red">{val.player1Role}</i>
+                      )}
                     </p>
                   </label>
 
@@ -191,12 +233,11 @@ export const Laddu = () => {
                     );
                   })} */}
                     <p className="state">
-                      {/* {val.state.trim() ? (
-                      <i className="note red">Negative</i>
-                    ) : (
-                      <i className="note">Positive</i>
-                    )} */}
-                      <i className="note red">{val.player2Role}</i>{" "}
+                      {val.player2Role.toUpperCase() == "PLAYER" ? (
+                        <i className="note">{val.player2Role}</i>
+                      ) : (
+                        <i className="note red">{val.player2Role}</i>
+                      )}
                     </p>
                   </label>
                 </div>
