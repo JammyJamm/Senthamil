@@ -1,7 +1,7 @@
 import logo from "../src/assets/images/logo.png";
 import { Link } from "react-router-dom";
 import background from "../src/assets/images/Background.png";
-import getdata from "./LadduAddData.json";
+
 import { useEffect, useState } from "react";
 import batter from "../src/assets/images/batter.svg";
 import { collection, getDocs, query } from "@firebase/firestore";
@@ -14,24 +14,24 @@ export const Laddu = () => {
   const [filterScore, setFilterScore] = useState(0);
   // Get Data
   // Fetching Data Ends //
-  // const userData = async () => {
-  //   const q = query(collection(db, "Laddu"));
-  //   const querySnapshot = await getDocs(q);
-  //   const data = querySnapshot.docs.map((doc) => ({
-  //     ...doc.data(),
-  //     id: doc.id,
-  //     //
-  //     ...doc.data(),
-  //   }));
-  //   setDetail(data);
-  //   console.log(data);
-  // };
-  // useEffect(() => {
-  //   userData();
-  // }, []);
+  const userData = async () => {
+    const q = query(collection(db, "Laddu"));
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+      //
+      ...doc.data(),
+    }));
+    setDetail(data);
+    console.log(data);
+  };
   useEffect(() => {
-    setData(getdata);
-  }, [getdata]);
+    userData();
+  }, []);
+  useEffect(() => {
+    setData(userData);
+  }, [userData]);
   const handleNav = (role) => {
     setFilterOutcome(role);
     if (role == "PLAYER") {

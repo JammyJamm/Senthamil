@@ -472,6 +472,7 @@ table tbody tr.loss {
   box-shadow: none;
   background-color: #fff;
   border: 1px solid #dfdfdf;
+  padding: 0px;
 }
 .main-card .card .top,
 .main-card .card .bottom,
@@ -484,6 +485,7 @@ table tbody tr.loss {
 }
 .main-card .card .middle {
   margin-bottom: 2px;
+  padding: 8px 16px;
 }
 .main-card .card .top label,
 .main-card .card .bottom label,
@@ -502,14 +504,22 @@ table tbody tr.loss {
   white-space: nowrap;
 }
 .main-card .card .top {
-  background-color: rgb(178, 186, 187, 0.1);
-  position: relative;
-  left: -17px;
-  top: -9px;
+  /* background-color: rgb(178, 186, 187, 0.1); */
+  background: linear-gradient(
+    to right,
+    rgba(244, 255, 223, 1),
+    rgba(244, 255, 223, 0)
+  );
+  /* position: relative;
+  left: -16px;
+  top: -8px; */
   padding: 2px 10px;
-  color: rgb(178, 186, 187);
+  color: #51514f;
   font-size: 10px;
+  font-weight: 500;
   border-radius: 5px 0px 0px 0px;
+  border-bottom: 1px solid #ededed;
+  text-transform: capitalize;
 }
 
 .main-card .card .top label:nth-child(2) {
@@ -555,6 +565,10 @@ table tbody tr.loss {
   margin-top: 6px;
   color: rgb(8, 8, 8, 0.5);
 }
+.main-card .card .bottom {
+  border-top: 1px solid #ededed;
+  padding: 4px 8px;
+}
 .main-card .card .bottom label:nth-child(2) {
   display: flex;
   justify-content: center;
@@ -578,6 +592,7 @@ table tbody tr.loss {
 .main-card .card .state:nth-child(1) i.red {
   color: rgb(186, 74, 0);
   border: 1px solid rgb(186, 74, 0, 0.3);
+
   background: linear-gradient(
     to right,
     rgb(186, 74, 0, 0.2),
