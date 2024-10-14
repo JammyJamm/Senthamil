@@ -5,6 +5,7 @@ import RouterNav from "./RouterNav";
 import { Laddu } from "./Laddu";
 import { Sabi } from "./Sabi";
 import { LadduAdd } from "./LadduAdd";
+import { LadduDev } from "./LadduDev";
 
 export const App = () => {
   return (

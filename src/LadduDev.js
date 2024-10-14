@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import batter from "../src/assets/images/batter.svg";
 import { collection, getDocs, query } from "@firebase/firestore";
 import db from "./FirbaseConfig";
-export const Laddu = () => {
+export const LadduDev = () => {
   const [data, setData] = useState([]);
   const [detail, setDetail] = useState([]);
   const [filterData, setFilterData] = useState(detail);
@@ -37,7 +37,7 @@ export const Laddu = () => {
     if (role == "PLAYER") {
       setFilterScore(27);
       setFilterData(
-        data.filter((list) => {
+        detail.filter((list) => {
           return (
             list.player2Role.toUpperCase() == "PLAYER" &&
             list.player1Role.toUpperCase() == "PLAYER"
@@ -48,7 +48,7 @@ export const Laddu = () => {
     if (role == "CAPTAIN") {
       setFilterScore(37);
       setFilterData(
-        data.filter((list) => {
+        detail.filter((list) => {
           return (
             list.player2Role.toUpperCase() == "CAPTAIN" ||
             list.player1Role.toUpperCase() == "CAPTAIN"
@@ -59,7 +59,7 @@ export const Laddu = () => {
     if (role == "WK") {
       setFilterScore(37);
       setFilterData(
-        data.filter((list) => {
+        detail.filter((list) => {
           return (
             list.player2Role.toUpperCase() == "WK" ||
             list.player1Role.toUpperCase() == "WK"

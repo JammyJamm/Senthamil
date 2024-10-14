@@ -144,6 +144,7 @@ export const Laddu = () => {
                       textAlign: "start",
                     }}
                   >
+                    {/* <i></i> */}
                     <span>{val.player1Score}</span>
                     <b
                       style={{
