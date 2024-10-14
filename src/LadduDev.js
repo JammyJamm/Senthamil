@@ -95,6 +95,7 @@ export const LadduDev = () => {
               style={{ padding: "0px" }}
             >
               <label className="batter"></label>
+              <span>Player</span>
             </button>
             <button
               className={filterOutcome == "WK" ? "selected" : ""}
@@ -102,6 +103,7 @@ export const LadduDev = () => {
               style={{ padding: "0px" }}
             >
               <label className="keeper"></label>
+              <span>Keeper</span>
             </button>
             <button
               className={filterOutcome == "CAPTAIN" ? "selected" : ""}
@@ -109,6 +111,7 @@ export const LadduDev = () => {
               style={{ padding: "0px" }}
             >
               <label className="captain"></label>
+              <span>Captain</span>
             </button>
           </div>
         </div>
@@ -143,6 +146,7 @@ export const LadduDev = () => {
                       textAlign: "start",
                     }}
                   >
+                    {/* <i></i> */}
                     <span>{val.player1Score}</span>
                     <b
                       style={{
