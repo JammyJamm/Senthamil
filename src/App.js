@@ -15,7 +15,7 @@ export const App = () => {
           <Route index element={<Main />} />
           <Route path="senthamil" element={<Main />} />
           <Route path="sabi" element={<Sabi />} />
-          <Route path="laddu" element={<Laddu />} />
+          <Route path="laddu" element={<LadduDev />} />
           <Route path="ladduAdd" element={<LadduAdd />} />
         </Route>
       </Routes>

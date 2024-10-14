@@ -7,7 +7,7 @@ import batter from "../src/assets/images/batter.svg";
 import { collection, getDocs, query } from "@firebase/firestore";
 import db from "./FirbaseConfig";
 export const Laddu = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(getdata);
   const [detail, setDetail] = useState([]);
   const [filterData, setFilterData] = useState(detail);
   const [filterOutcome, setFilterOutcome] = useState("PLAYER");
@@ -31,6 +31,7 @@ export const Laddu = () => {
   // }, []);
   useEffect(() => {
     setData(getdata);
+    handleNav(filterOutcome);
   }, [getdata]);
   const handleNav = (role) => {
     setFilterOutcome(role);
@@ -96,6 +97,7 @@ export const Laddu = () => {
               style={{ padding: "0px" }}
             >
               <label className="batter"></label>
+              <span>Player</span>
             </button>
             <button
               className={filterOutcome == "WK" ? "selected" : ""}
@@ -103,6 +105,7 @@ export const Laddu = () => {
               style={{ padding: "0px" }}
             >
               <label className="keeper"></label>
+              <span>Keeper</span>
             </button>
             <button
               className={filterOutcome == "CAPTAIN" ? "selected" : ""}
@@ -110,6 +113,7 @@ export const Laddu = () => {
               style={{ padding: "0px" }}
             >
               <label className="captain"></label>
+              <span>Captain</span>
             </button>
           </div>
         </div>

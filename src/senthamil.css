@@ -188,7 +188,7 @@ table tbody tr.loss {
   /* background-color: #495057; */
   background-color: #fff;
   border-top: 1px solid #dddddd;
-  padding: 10px 16px 10px 16px;
+  padding: 10px 16px 16px 16px;
   box-shadow: 0px 1px 1px -1px rgba(0, 0, 0, 0.2),
     0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 1px 0px rgba(0, 0, 0, 0.12);
 }
@@ -208,11 +208,34 @@ table tbody tr.loss {
   padding: 10px 10px;
   /* border: 1px solid rgb(255, 255, 255); */
   /* background-color: rgba(255, 255, 255, 0.2); */
+  position: relative;
 }
 .ui-nav button.selected {
-  color: rgb(255, 0, 0, 1);
-  /* background-color: rgb(255, 255, 255); */
-  border-bottom: 2px solid rgb(255, 0, 0, 1);
+  /* position: relative; */
+  /* color: rgb(255, 0, 0, 1);
+   background-color: rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(255, 0, 0, 1); */
+}
+.ui-nav button.selected span,
+.ui-nav button.selected {
+  color: rgb(255, 0, 0);
+}
+.ui-nav button span {
+  position: absolute;
+  top: 24px;
+  font-size: 10px;
+  font-weight: 500;
+  color: gray;
+}
+.ui-nav button.selected::before {
+  content: "";
+  display: block;
+  width: 200%;
+  height: 4px;
+  border-radius: 0px 0px 50px 50px;
+  background-color: red;
+  position: absolute;
+  top: -10px;
 }
 .ui-nav button img {
   width: 70px;
@@ -663,25 +686,25 @@ nav img {
   width: 36px;
 }
 .batter {
+  width: 16px;
+  height: 18px;
   background-image: url("./assets/images/batter.svg");
-  width: 100%; /* Set dimensions */
-  height: 100%; /* Set dimensions */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .keeper {
+  width: 16px;
+  height: 18px;
   background-image: url("./assets/images/keeper.svg");
-  width: 100%; /* Set dimensions */
-  height: 100%; /* Set dimensions */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .captain {
+  width: 16px;
+  height: 18px;
   background-image: url("./assets/images/captain.svg");
-  width: 100%; /* Set dimensions */
-  height: 100%; /* Set dimensions */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

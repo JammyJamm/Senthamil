@@ -28,10 +28,9 @@ export const LadduDev = () => {
   };
   useEffect(() => {
     userData();
-  }, []);
-  useEffect(() => {
-    setData(userData);
-  }, [userData]);
+    handleNav(filterOutcome);
+  }, [detail]);
+
   const handleNav = (role) => {
     setFilterOutcome(role);
     if (role == "PLAYER") {
