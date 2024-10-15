@@ -26,6 +26,9 @@ h1 {
   padding: 8px 16px;
   margin-bottom: 6px;
 }
+.card:last-child {
+  margin-bottom: 44px;
+}
 .btn-primary {
   font-weight: 600;
   font-size: 0.875rem;
@@ -219,6 +222,9 @@ table tbody tr.loss {
 .ui-nav button.selected span,
 .ui-nav button.selected {
   color: rgb(255, 0, 0);
+}
+.ui-nav button.selected svg path {
+  fill: rgb(255, 0, 0);
 }
 .ui-nav button span {
   position: absolute;
@@ -494,7 +500,7 @@ table tbody tr.loss {
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 1px 0px rgba(0, 0, 0, 0.12); */
   box-shadow: none;
   background-color: #fff;
-  border: 1px solid #dfdfdf;
+  border: 1px solid #ced9eb;
   padding: 0px;
 }
 .main-card .card .top,
@@ -527,8 +533,8 @@ table tbody tr.loss {
   white-space: nowrap;
 }
 .main-card .card .top {
-  background-color: rgb(178, 186, 187, 0.1);
-
+  /* background-color: rgb(178, 186, 187, 0.1); */
+  background-color: rgb(206, 217, 235, 0.3);
   /* position: relative;
   left: -16px;
   top: -8px; */
@@ -542,6 +548,10 @@ table tbody tr.loss {
 }
 
 .main-card .card .top label:nth-child(2) {
+  padding-right: 10px;
+  text-align: right;
+}
+/* .main-card .card .top label:nth-child(2) {
   height: 100%;
   display: flex;
   justify-content: end;
@@ -552,7 +562,7 @@ table tbody tr.loss {
   position: absolute;
   right: 0px;
   padding-left: 10px;
-  /* background-color: #fff; */
+   background-color: #fff;
 }
 .main-card .card .top label:nth-child(2) span {
   content: " ";
@@ -563,7 +573,7 @@ table tbody tr.loss {
   border-style: solid;
   border-width: 0px 0px 30px 15px;
   border-color: transparent transparent #fff;
-}
+} */
 .main-card .card .middle label {
   width: 33.333%;
 }
@@ -667,7 +677,7 @@ table tbody tr.loss {
 /* Nav links Starts */
 nav {
   position: fixed;
-  bottom: 46px;
+  bottom: 92px;
   z-index: 999;
   background-color: #fff;
   box-shadow: 1px 1px 1px #d1d2d3;

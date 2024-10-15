@@ -6,12 +6,18 @@ import { useEffect, useState } from "react";
 import batter from "../src/assets/images/batter.svg";
 import { collection, getDocs, query } from "@firebase/firestore";
 import db from "./FirbaseConfig";
+import getImages from "../src/assets/images/add.svg";
+import { ReactComponent as Batter } from "../src/assets/images/batter.svg";
+import { ReactComponent as Keeper } from "../src/assets/images/keeper.svg";
+import { ReactComponent as Captain } from "../src/assets/images/captain.svg";
 export const Laddu = () => {
   const [data, setData] = useState(getdata);
   const [detail, setDetail] = useState([]);
   const [filterData, setFilterData] = useState(detail);
   const [filterOutcome, setFilterOutcome] = useState("PLAYER");
   const [filterScore, setFilterScore] = useState(0);
+  const [rangeMin, setRangeMin] = useState(0);
+  const [rangeMax, setRangeMax] = useState(0);
   // Get Data
   // Fetching Data Ends //
   // const userData = async () => {
@@ -72,6 +78,21 @@ export const Laddu = () => {
   useEffect(() => {
     handleNav("PLAYER");
   }, []);
+  const rangeMaxFun = (val) => {
+    var max = Math.max(val.player1Score, val.player2Score);
+    console.log(filterOutcome);
+    switch (filterOutcome) {
+      case "PLAYER":
+        //if (max >= 27) return max;
+        if (val.player1Score == 0 || val.player2Score == 0)
+          max = 27 + Number(val.player1Score) + Number(val.player2Score);
+        return max;
+        break;
+
+      default:
+        break;
+    }
+  };
   return (
     <>
       <div
@@ -96,7 +117,8 @@ export const Laddu = () => {
               onClick={() => handleNav("PLAYER")}
               style={{ padding: "0px" }}
             >
-              <label className="batter"></label>
+              <Batter />
+              {/* <label className="batter"></label> */}
               <span>Player</span>
             </button>
             <button
@@ -104,7 +126,8 @@ export const Laddu = () => {
               onClick={() => handleNav("WK")}
               style={{ padding: "0px" }}
             >
-              <label className="keeper"></label>
+              <Keeper />
+              {/* <label className="keeper"></label> */}
               <span>Keeper</span>
             </button>
             <button
@@ -112,7 +135,8 @@ export const Laddu = () => {
               onClick={() => handleNav("CAPTAIN")}
               style={{ padding: "0px" }}
             >
-              <label className="captain"></label>
+              <Captain />
+              {/* <label className="captain"></label> */}
               <span>Captain</span>
             </button>
           </div>
@@ -136,9 +160,24 @@ export const Laddu = () => {
                   >
                     {val.league}
                   </label>
-                  {/* <label>
-                    <span>{val.league}</span>
-                  </label> */}
+                  <label>
+                    Under - {rangeMaxFun(val)}
+                    {/* {val.player1Score > val.player2Score
+                      ? val.player1Score >= 27
+                        ? val.player2Score == 0
+                          ? 37 + Number(val.player1Score)
+                          : 37
+                        : val.player2Score == 0
+                        ? 27 + Number(val.player1Score)
+                        : 27
+                      : val.player2Score >= 27
+                      ? val.player1Score == 0
+                        ? 37 + Number(val.player2Score)
+                        : 37
+                      : val.player1Score == 0
+                      ? 27 + Number(val.player2Score)
+                      : 27} */}
+                  </label>
                 </div>
                 <div className="middle">
                   <label
