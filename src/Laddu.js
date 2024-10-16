@@ -94,12 +94,13 @@ export const Laddu = () => {
     switch (filterOutcome) {
       case "PLAYER":
         if (val.player1Score == 0 || val.player2Score == 0) {
-          // if (val.player1Score >= 27 || val.player2Score >= 27) {
-          //   max = 37 + Number(val.player1Score) + Number(val.player2Score);
-          // } else {
-          //   max = 27 + Number(val.player1Score) + Number(val.player2Score);
-          // }
-          max = 37;
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            max = 37 + Number(val.player1Score) + Number(val.player2Score);
+          } else {
+            max = 49;
+            // Not confirmed 42,24,49,30,33*
+          }
+          //max = 37;
         } else {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
             if (val.player1Score >= 27 && val.player2Score >= 27) {
