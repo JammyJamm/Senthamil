@@ -2,16 +2,16 @@ import { Outlet, Link } from "react-router-dom";
 import MatchImage from "../src/assets/images/fire.png";
 import { useState } from "react";
 const RouterNav = () => {
-  const [counter, setCounter] = useState(2);
+  const [counter, setCounter] = useState(1);
   const handleNav = () => {
-    if (counter == 3) setCounter(1);
+    if (counter == 2) setCounter(1);
     else setCounter(counter + 1);
   };
   return (
     <>
       {/* <nav>
         <ul>
-          <li>
+          <li> 
             <Link to="/">Home</Link>
           </li>
           <li>

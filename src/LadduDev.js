@@ -1,17 +1,24 @@
 import logo from "../src/assets/images/logo.png";
 import { Link } from "react-router-dom";
 import background from "../src/assets/images/Background.png";
-
+import getdata from "./LadduAddData.json";
 import { useEffect, useState } from "react";
 import batter from "../src/assets/images/batter.svg";
 import { collection, getDocs, query } from "@firebase/firestore";
 import db from "./FirbaseConfig";
+import getImages from "../src/assets/images/add.svg";
+import { ReactComponent as Batter } from "../src/assets/images/batter.svg";
+import { ReactComponent as Keeper } from "../src/assets/images/keeper.svg";
+import { ReactComponent as Captain } from "../src/assets/images/captain.svg";
 export const LadduDev = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(getdata);
   const [detail, setDetail] = useState([]);
   const [filterData, setFilterData] = useState(detail);
   const [filterOutcome, setFilterOutcome] = useState("PLAYER");
   const [filterScore, setFilterScore] = useState(0);
+  const [rangeMin, setRangeMin] = useState(0);
+  const [rangeMax, setRangeMax] = useState(0);
+  const [underScore, setUnderScore] = useState(0);
   // Get Data
   // Fetching Data Ends //
   const userData = async () => {
@@ -23,20 +30,23 @@ export const LadduDev = () => {
       //
       ...doc.data(),
     }));
-    setDetail(data);
+    //setDetail(data);
+    setData(data);
     console.log(data);
   };
   useEffect(() => {
     userData();
+  }, []);
+  useEffect(() => {
+    //setData(detail);
     handleNav(filterOutcome);
-  }, [detail]);
-
+  }, [data]);
   const handleNav = (role) => {
     setFilterOutcome(role);
     if (role == "PLAYER") {
       setFilterScore(27);
       setFilterData(
-        detail.filter((list) => {
+        data.filter((list) => {
           return (
             list.player2Role.toUpperCase() == "PLAYER" &&
             list.player1Role.toUpperCase() == "PLAYER"
@@ -47,7 +57,7 @@ export const LadduDev = () => {
     if (role == "CAPTAIN") {
       setFilterScore(37);
       setFilterData(
-        detail.filter((list) => {
+        data.filter((list) => {
           return (
             list.player2Role.toUpperCase() == "CAPTAIN" ||
             list.player1Role.toUpperCase() == "CAPTAIN"
@@ -58,7 +68,7 @@ export const LadduDev = () => {
     if (role == "WK") {
       setFilterScore(37);
       setFilterData(
-        detail.filter((list) => {
+        data.filter((list) => {
           return (
             list.player2Role.toUpperCase() == "WK" ||
             list.player1Role.toUpperCase() == "WK"
@@ -70,6 +80,70 @@ export const LadduDev = () => {
   useEffect(() => {
     handleNav("PLAYER");
   }, []);
+  const rangeMaxFun = (val) => {
+    var max = Math.max(val.player1Score, val.player2Score);
+    var min = Math.min(val.player1Score, val.player2Score);
+    console.log(filterOutcome);
+    switch (filterOutcome) {
+      case "PLAYER":
+        if (val.player1Score == 0 || val.player2Score == 0) {
+          // if (val.player1Score >= 27 || val.player2Score >= 27) {
+          //   max = 37 + Number(val.player1Score) + Number(val.player2Score);
+          // } else {
+          //   max = 27 + Number(val.player1Score) + Number(val.player2Score);
+          // }
+          max = 37;
+        } else {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            if (val.player1Score >= 27 && val.player2Score >= 27) {
+              max = max + 10;
+            } else {
+              if (
+                (val.player1Score >= 27 && val.player2Score <= 27) ||
+                (val.player2Score >= 27 && val.player1Score <= 27)
+              ) {
+                max = max + 10;
+              } else {
+                max = 27 + max;
+              }
+            }
+          } else {
+            if (Number(val.player1Score) + Number(val.player2Score) >= 27) {
+              max = 27 + max + min;
+            } else max = 27;
+          }
+        }
+        return max;
+        break;
+      case "WK":
+        if (val.player1Score == 0 || val.player2Score == 0) {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            max = 37;
+          } else {
+            max = 27 + Number(val.player1Score) + Number(val.player2Score);
+          }
+        } else {
+          max = 37 + min;
+        }
+        return max;
+        break;
+      case "CAPTAIN":
+        if (val.player1Score == 0 || val.player2Score == 0) {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            max = 37;
+          } else {
+            // max = 27 + Number(val.player1Score) + Number(val.player2Score);
+            max = 37;
+          }
+        } else {
+          // max = 37 + min;
+          max = 37;
+        }
+        return max;
+      default:
+        break;
+    }
+  };
   return (
     <>
       <div
@@ -94,7 +168,8 @@ export const LadduDev = () => {
               onClick={() => handleNav("PLAYER")}
               style={{ padding: "0px" }}
             >
-              <label className="batter"></label>
+              <Batter />
+              {/* <label className="batter"></label> */}
               <span>Player</span>
             </button>
             <button
@@ -102,7 +177,8 @@ export const LadduDev = () => {
               onClick={() => handleNav("WK")}
               style={{ padding: "0px" }}
             >
-              <label className="keeper"></label>
+              <Keeper />
+              {/* <label className="keeper"></label> */}
               <span>Keeper</span>
             </button>
             <button
@@ -110,7 +186,8 @@ export const LadduDev = () => {
               onClick={() => handleNav("CAPTAIN")}
               style={{ padding: "0px" }}
             >
-              <label className="captain"></label>
+              <Captain />
+              {/* <label className="captain"></label> */}
               <span>Captain</span>
             </button>
           </div>
@@ -134,9 +211,7 @@ export const LadduDev = () => {
                   >
                     {val.league}
                   </label>
-                  {/* <label>
-                    <span>{val.league}</span>
-                  </label> */}
+                  <label>Under - {rangeMaxFun(val)}</label>
                 </div>
                 <div className="middle">
                   <label
@@ -169,8 +244,10 @@ export const LadduDev = () => {
                       .trim()
                       .split(",")
                       .map((score) => {
-                        return parseInt(score.match(/\d+/g)) <= filterScore ? (
-                          parseInt(score.match(/\d+/g)) <= filterScore - 15 ? (
+                        return parseInt(score.match(/\d+/g)) <=
+                          rangeMaxFun(val) ? (
+                          parseInt(score.match(/\d+/g)) <=
+                          rangeMaxFun(val) - 15 ? (
                             <span
                               className="blue"
                               style={{ marginRight: "2px" }}

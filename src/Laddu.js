@@ -18,6 +18,14 @@ export const Laddu = () => {
   const [filterScore, setFilterScore] = useState(0);
   const [rangeMin, setRangeMin] = useState(0);
   const [rangeMax, setRangeMax] = useState(0);
+  const [underScore, setUnderScore] = useState(0);
+  const [searchVal, setSearchVal] = useState([
+    {
+      player2Score: "0",
+      player1Role: "WK",
+      player1Score: "0",
+    },
+  ]);
   // Get Data
   // Fetching Data Ends //
   // const userData = async () => {
@@ -36,6 +44,7 @@ export const Laddu = () => {
   //   userData();
   // }, []);
   useEffect(() => {
+    console.log(getdata);
     setData(getdata);
     handleNav(filterOutcome);
   }, [getdata]);
@@ -80,19 +89,81 @@ export const Laddu = () => {
   }, []);
   const rangeMaxFun = (val) => {
     var max = Math.max(val.player1Score, val.player2Score);
-    console.log(filterOutcome);
+    var min = Math.min(val.player1Score, val.player2Score);
+    // console.log(filterOutcome);
     switch (filterOutcome) {
       case "PLAYER":
-        //if (max >= 27) return max;
-        if (val.player1Score == 0 || val.player2Score == 0)
-          max = 27 + Number(val.player1Score) + Number(val.player2Score);
+        if (val.player1Score == 0 || val.player2Score == 0) {
+          // if (val.player1Score >= 27 || val.player2Score >= 27) {
+          //   max = 37 + Number(val.player1Score) + Number(val.player2Score);
+          // } else {
+          //   max = 27 + Number(val.player1Score) + Number(val.player2Score);
+          // }
+          max = 37;
+        } else {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            if (val.player1Score >= 27 && val.player2Score >= 27) {
+              max = max + 10;
+            } else {
+              if (
+                (val.player1Score >= 27 && val.player2Score <= 27) ||
+                (val.player2Score >= 27 && val.player1Score <= 27)
+              ) {
+                max = max + 10;
+              } else {
+                max = 27 + max;
+              }
+            }
+          } else {
+            if (Number(val.player1Score) + Number(val.player2Score) >= 27) {
+              max = 27 + max + min;
+            } else max = 27;
+          }
+        }
         return max;
         break;
-
+      case "WK":
+        if (val.player1Score == 0 || val.player2Score == 0) {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            max = 37;
+          } else {
+            max = 27 + Number(val.player1Score) + Number(val.player2Score);
+          }
+        } else {
+          max = 37 + min;
+        }
+        return max;
+        break;
+      case "CAPTAIN":
+        if (val.player1Score == 0 || val.player2Score == 0) {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            max = 37;
+          } else {
+            // max = 27 + Number(val.player1Score) + Number(val.player2Score);
+            max = 37;
+          }
+        } else {
+          // max = 37 + min;
+          max = 37;
+        }
+        return max;
       default:
         break;
     }
   };
+  const handleChange = (e) => {
+    e.target.value;
+    // Sending form
+    const addForm = document.querySelector("#searchForm");
+    setRangeMax(
+      rangeMaxFun({
+        player1Score: addForm.player1Score.value,
+        player2Score: addForm.player2Score.value,
+        player1Role: addForm.player1Role.value,
+      })
+    );
+  };
+
   return (
     <>
       <div
@@ -143,7 +214,55 @@ export const Laddu = () => {
         </div>
       </div>
       <div className="main">
-        <p className="card col-12 ui-note" style={{ marginTop: "38px" }}>
+        <form
+          className="predictionForm"
+          style={{ marginTop: "38px", display: "flex" }}
+          id="searchForm"
+        >
+          <div className="col-3 col-md-3">
+            <input
+              type="text"
+              className="form-control"
+              name="player1Score"
+              onChange={handleChange}
+              required
+              placeholder="Player 1"
+            />
+          </div>
+          <div className="col-3 col-md-3">
+            <input
+              type="text"
+              className="form-control"
+              name="player2Score"
+              onChange={handleChange}
+              required
+              placeholder="Player 2"
+            />
+          </div>
+          <div className="col-3 col-md-3">
+            <select
+              type="text"
+              className="form-control"
+              name="player1Role"
+              onChange={handleChange}
+              required
+            >
+              <option value="wk">Wicket Keeper</option>
+              <option value="captain">Captain</option>
+              <option value="player">Player</option>
+            </select>
+          </div>
+          <div
+            className="col-3 col-md-3"
+            style={{ display: "flex", justifyContent: "center" }}
+          >
+            <label style={{ padding: "6px 10px" }}>Under - {rangeMax}</label>
+          </div>
+        </form>
+        <p
+          className="card col-12 ui-note"
+          style={{ margin: "0px 0px 5px 0px" }}
+        >
           <b>Note</b>
         </p>
         <div className="main-card">
@@ -160,24 +279,7 @@ export const Laddu = () => {
                   >
                     {val.league}
                   </label>
-                  <label>
-                    Under - {rangeMaxFun(val)}
-                    {/* {val.player1Score > val.player2Score
-                      ? val.player1Score >= 27
-                        ? val.player2Score == 0
-                          ? 37 + Number(val.player1Score)
-                          : 37
-                        : val.player2Score == 0
-                        ? 27 + Number(val.player1Score)
-                        : 27
-                      : val.player2Score >= 27
-                      ? val.player1Score == 0
-                        ? 37 + Number(val.player2Score)
-                        : 37
-                      : val.player1Score == 0
-                      ? 27 + Number(val.player2Score)
-                      : 27} */}
-                  </label>
+                  <label>Under - {rangeMaxFun(val)}</label>
                 </div>
                 <div className="middle">
                   <label
@@ -210,8 +312,10 @@ export const Laddu = () => {
                       .trim()
                       .split(",")
                       .map((score) => {
-                        return parseInt(score.match(/\d+/g)) <= filterScore ? (
-                          parseInt(score.match(/\d+/g)) <= filterScore - 15 ? (
+                        return parseInt(score.match(/\d+/g)) <=
+                          rangeMaxFun(val) ? (
+                          parseInt(score.match(/\d+/g)) <=
+                          rangeMaxFun(val) - 15 ? (
                             <span
                               className="blue"
                               style={{ marginRight: "2px" }}

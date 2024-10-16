@@ -13,9 +13,9 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<RouterNav />}>
           <Route index element={<Laddu />} />
-          <Route path="senthamil" element={<Main />} />
+          <Route path="laddu" element={<Main />} />
+          <Route path="senthamil" element={<Laddu />} />
           <Route path="sabi" element={<Sabi />} />
-          <Route path="laddu" element={<Laddu />} />
           <Route path="ladduAdd" element={<LadduAdd />} />
         </Route>
       </Routes>
