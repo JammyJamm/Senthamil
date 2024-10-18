@@ -4,7 +4,7 @@ import { useState } from "react";
 const RouterNav = () => {
   const [counter, setCounter] = useState(1);
   const handleNav = () => {
-    if (counter == 2) setCounter(1);
+    if (counter == 3) setCounter(1);
     else setCounter(counter + 1);
   };
   return (

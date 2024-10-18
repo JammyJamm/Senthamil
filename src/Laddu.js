@@ -18,6 +18,7 @@ export const Laddu = () => {
   const [filterScore, setFilterScore] = useState(0);
   const [rangeMin, setRangeMin] = useState(0);
   const [rangeMax, setRangeMax] = useState(0);
+  const [filterLeague, setFilterLeague] = useState("IPL");
   const [underScore, setUnderScore] = useState(0);
   const [searchVal, setSearchVal] = useState([
     {
@@ -26,6 +27,15 @@ export const Laddu = () => {
       player1Score: "0",
     },
   ]);
+  const [match, setMatch] = useState(0);
+  const [winning, setWinning] = useState(0);
+  const [loosing, setLoosing] = useState(0);
+  const [noBet, setNoBet] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [price, setPrice] = useState(10000);
+  const [priceTotal, setPriceTotal] = useState(0);
+  const [priceWin, setPriceWin] = useState(0);
+  const [priceLoss, setPriceLoss] = useState(0);
   // Get Data
   // Fetching Data Ends //
   // const userData = async () => {
@@ -44,11 +54,16 @@ export const Laddu = () => {
   //   userData();
   // }, []);
   useEffect(() => {
-    console.log(getdata);
+    //console.log(getdata);
     setData(getdata);
     handleNav(filterOutcome);
   }, [getdata]);
-  const handleNav = (role) => {
+
+  const handleLeague = (e) => {
+    setFilterLeague(e.target.value);
+    handleNav(filterOutcome, e.target.value);
+  };
+  const handleNav = (role, league) => {
     setFilterOutcome(role);
     if (role == "PLAYER") {
       setFilterScore(27);
@@ -56,7 +71,8 @@ export const Laddu = () => {
         data.filter((list) => {
           return (
             list.player2Role.toUpperCase() == "PLAYER" &&
-            list.player1Role.toUpperCase() == "PLAYER"
+            list.player1Role.toUpperCase() == "PLAYER" &&
+            list.league.toUpperCase() == league
           );
         })
       );
@@ -66,8 +82,10 @@ export const Laddu = () => {
       setFilterData(
         data.filter((list) => {
           return (
-            list.player2Role.toUpperCase() == "CAPTAIN" ||
-            list.player1Role.toUpperCase() == "CAPTAIN"
+            (list.player2Role.toUpperCase() == "CAPTAIN" &&
+              list.league.toUpperCase() == league) ||
+            (list.player1Role.toUpperCase() == "CAPTAIN" &&
+              list.league.toUpperCase() == league)
           );
         })
       );
@@ -77,20 +95,61 @@ export const Laddu = () => {
       setFilterData(
         data.filter((list) => {
           return (
-            list.player2Role.toUpperCase() == "WK" ||
-            list.player1Role.toUpperCase() == "WK"
+            (list.player2Role.toUpperCase() == "WK" &&
+              list.league.toUpperCase() == league) ||
+            (list.player1Role.toUpperCase() == "WK" &&
+              list.league.toUpperCase() == league)
           );
         })
       );
     }
   };
   useEffect(() => {
-    handleNav("PLAYER");
+    handleNav("PLAYER", "IPL");
   }, []);
+
+  useEffect(() => {
+    setMatch(0);
+    setTotal(0);
+    setWinning(0);
+    setLoosing(0);
+    setNoBet(0);
+    setPriceWin(0);
+    setPriceLoss(0);
+    setPriceTotal(0);
+    setMatch(filterData?.length);
+    filterData?.map((val) => {
+      val.result
+        .trim()
+        .split(",")
+        .map((score) => {
+          // Total
+          setTotal((val) => val + 1);
+
+          // Winning
+          if (
+            rangeMaxFun(val) - 15 <= parseInt(score.match(/\d+/g)) &&
+            rangeMaxFun(val) >= parseInt(score.match(/\d+/g))
+          ) {
+            setWinning((val) => val + 1);
+            setPriceWin((val) => val + price);
+            setPriceTotal((val) => val + price);
+          } else {
+            setNoBet((val) => val + 1);
+          }
+          // Lossing
+          if (rangeMaxFun(val) < parseInt(score.match(/\d+/g))) {
+            setLoosing((val) => val + 1);
+            setPriceLoss((val) => val + price);
+            setPriceTotal((val) => val + price);
+          }
+        });
+    });
+  }, [filterData]);
   const rangeMaxFun = (val) => {
     var max = Math.max(val.player1Score, val.player2Score);
     var min = Math.min(val.player1Score, val.player2Score);
-    // console.log(filterOutcome);
+
     switch (filterOutcome) {
       case "PLAYER":
         if (val.player1Score == 0 || val.player2Score == 0) {
@@ -121,6 +180,7 @@ export const Laddu = () => {
             } else max = 27;
           }
         }
+
         return max;
         break;
       case "WK":
@@ -165,28 +225,57 @@ export const Laddu = () => {
     );
   };
 
+  //const handleWinning = (state) => {
+  // if (state == "WIN") setWinning((val) => val + 1);
+  // if (state == "LOSE") setLoosing((val) => val - 1);
+  // if (state == "NO_BET") setNoBet((val) => val);
+  // };
+
   return (
     <>
       <div
         className="ui-topNav ui-match-nav"
-        style={{ backgroundImage: `url(${background})` }}
+        style={{
+          backgroundImage: `url(${background})`,
+          flexDirection: "column",
+          paddingBottom: "0px",
+        }}
       >
-        <div className="profile">
-          <div className="image">
-            <img src={logo} alt="logo" />
+        <div className="image">
+          <div className="profile">
+            <div className="image">
+              <img src={logo} alt="logo" />
+            </div>
+          </div>
+          <div className="more">
+            <Link to="/ladduAdd">
+              <img src="/Senthamil/static/media/add.587029074ccbecca2d6d44140b51b354.svg" />
+            </Link>
           </div>
         </div>
-        <div class="more">
-          <Link to="/ladduAdd">
-            <img src="/Senthamil/static/media/add.587029074ccbecca2d6d44140b51b354.svg" />
-          </Link>
+        <div className="gameBlock">
+          <div className="game">
+            <button
+              value="IPL"
+              className={filterLeague == "IPL" ? "selected" : ""}
+              onClick={handleLeague}
+            >
+              IPL
+            </button>
+            <button
+              value="CPL"
+              className={filterLeague == "CPL" ? "selected" : ""}
+              onClick={handleLeague}
+            >
+              CPL
+            </button>
+          </div>
         </div>
-
         <div className="ui-nav">
           <div className="ui-block">
             <button
               className={filterOutcome == "PLAYER" ? "selected" : ""}
-              onClick={() => handleNav("PLAYER")}
+              onClick={() => handleNav("PLAYER", filterLeague)}
               style={{ padding: "0px" }}
             >
               <Batter />
@@ -195,7 +284,7 @@ export const Laddu = () => {
             </button>
             <button
               className={filterOutcome == "WK" ? "selected" : ""}
-              onClick={() => handleNav("WK")}
+              onClick={() => handleNav("WK", filterLeague)}
               style={{ padding: "0px" }}
             >
               <Keeper />
@@ -204,7 +293,7 @@ export const Laddu = () => {
             </button>
             <button
               className={filterOutcome == "CAPTAIN" ? "selected" : ""}
-              onClick={() => handleNav("CAPTAIN")}
+              onClick={() => handleNav("CAPTAIN", filterLeague)}
               style={{ padding: "0px" }}
             >
               <Captain />
@@ -217,7 +306,7 @@ export const Laddu = () => {
       <div className="main">
         <form
           className="predictionForm"
-          style={{ marginTop: "38px", display: "flex" }}
+          style={{ marginTop: "76px", display: "flex" }}
           id="searchForm"
         >
           <div className="col-3 col-md-3">
@@ -262,10 +351,43 @@ export const Laddu = () => {
         </form>
         <p
           className="card col-12 ui-note"
-          style={{ margin: "0px 0px 5px 0px" }}
+          style={{ margin: "5px 0px 5px 0px", display: "flex" }}
         >
-          <b>Note</b>
+          <div style={{ display: "flex" }}>
+            <p style={{ margin: "0px" }}>
+              <b>{priceTotal}</b>
+              <sub>(Total)</sub>
+            </p>
+            -
+            <p style={{ margin: "0px" }}>
+              <b>{priceLoss}</b>
+              <sub>(Loss)</sub>
+            </p>
+            ==
+            <p style={{ margin: "0px" }}>
+              <b>{priceWin}</b>
+              <sub>(Win)</sub>
+            </p>
+          </div>
         </p>
+
+        <div className="matchResult">
+          <span>
+            Match - <b>{match} </b>
+          </span>
+          <span>
+            Total - <b>{total} </b>
+          </span>
+          <span className="green">
+            Win - <b> {winning} </b>
+          </span>
+          <span className="red">
+            Loss - <b>{loosing} </b>
+          </span>
+          <span className="blue">
+            No_Bet - <b> {noBet} </b>
+          </span>
+        </div>
         <div className="main-card">
           {filterData?.map((val, id) => {
             return (
@@ -313,6 +435,8 @@ export const Laddu = () => {
                       .trim()
                       .split(",")
                       .map((score) => {
+                        // Winning
+                        parseInt(score.match(/\d+/g)) <= rangeMaxFun(val) - 15;
                         return parseInt(score.match(/\d+/g)) <=
                           rangeMaxFun(val) ? (
                           parseInt(score.match(/\d+/g)) <=

@@ -12,7 +12,7 @@ export const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<RouterNav />}>
-          <Route index element={<Laddu />} />
+          <Route index element={<Main />} />
           <Route path="laddu" element={<Main />} />
           <Route path="senthamil" element={<Laddu />} />
           <Route path="sabi" element={<Sabi />} />
