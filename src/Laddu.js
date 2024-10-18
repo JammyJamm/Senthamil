@@ -402,7 +402,11 @@ export const Laddu = () => {
                   >
                     {val.league}
                   </label>
-                  <label>Under - {rangeMaxFun(val)}</label>
+                  <label>
+                    <span>
+                      <b>Under - {rangeMaxFun(val)}</b>
+                    </span>
+                  </label>
                 </div>
                 <div className="middle">
                   <label
