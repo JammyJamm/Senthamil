@@ -11,7 +11,7 @@ import { ReactComponent as Batter } from "../src/assets/images/batter.svg";
 import { ReactComponent as Keeper } from "../src/assets/images/keeper.svg";
 import { ReactComponent as Captain } from "../src/assets/images/captain.svg";
 export const Laddu = () => {
-  const [data, setData] = useState(getdata);
+  const [data, setData] = useState([]);
   const [detail, setDetail] = useState([]);
   const [filterData, setFilterData] = useState(detail);
   const [filterOutcome, setFilterOutcome] = useState("PLAYER");
@@ -38,26 +38,26 @@ export const Laddu = () => {
   const [priceLoss, setPriceLoss] = useState(0);
   // Get Data
   // Fetching Data Ends //
-  // const userData = async () => {
-  //   const q = query(collection(db, "Laddu"));
-  //   const querySnapshot = await getDocs(q);
-  //   const data = querySnapshot.docs.map((doc) => ({
-  //     ...doc.data(),
-  //     id: doc.id,
-  //     //
-  //     ...doc.data(),
-  //   }));
-  //   setDetail(data);
-  //   console.log(data);
-  // };
-  // useEffect(() => {
-  //   userData();
-  // }, []);
+  const userData = async () => {
+    const q = query(collection(db, "Laddu"));
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+      //
+      ...doc.data(),
+    }));
+    setDetail(data);
+    console.log(data);
+  };
+  useEffect(() => {
+    userData();
+  }, []);
   useEffect(() => {
     //console.log(getdata);
-    setData(getdata);
+    setData(detail);
     handleNav(filterOutcome);
-  }, [getdata]);
+  }, [detail]);
 
   const handleLeague = (e) => {
     setFilterLeague(e.target.value);
