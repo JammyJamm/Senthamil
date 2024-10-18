@@ -141,7 +141,7 @@ export const Laddu = () => {
           if (rangeMaxFun(val) < parseInt(score.match(/\d+/g))) {
             setLoosing((val) => val + 1);
             setPriceLoss((val) => val + price);
-            setPriceTotal((val) => val + price);
+            setPriceTotal((val) => val - price);
           }
         });
     });
@@ -355,8 +355,8 @@ export const Laddu = () => {
         >
           <div style={{ display: "flex" }}>
             <p style={{ margin: "0px" }}>
-              <b>{priceTotal}</b>
-              <sub>(Total)</sub>
+              <b>{priceWin}</b>
+              <sub>(Win)</sub>
             </p>
             -
             <p style={{ margin: "0px" }}>
@@ -365,8 +365,8 @@ export const Laddu = () => {
             </p>
             ==
             <p style={{ margin: "0px" }}>
-              <b>{priceWin}</b>
-              <sub>(Win)</sub>
+              <b>{priceTotal}</b>
+              <sub>(Original)</sub>
             </p>
           </div>
         </p>
