@@ -56,9 +56,10 @@ export const Laddu = () => {
   useEffect(() => {
     //console.log(getdata);
     setData(detail);
-    handleNav(filterOutcome);
   }, [detail]);
-
+  useEffect(() => {
+    handleNav(filterOutcome, filterLeague);
+  }, [data]);
   const handleLeague = (e) => {
     setFilterLeague(e.target.value);
     handleNav(filterOutcome, e.target.value);
