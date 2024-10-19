@@ -151,14 +151,12 @@ export const Laddu = () => {
   const rangeMaxFun = (val) => {
     var max = Math.max(val.player1Score, val.player2Score);
     var min = Math.min(val.player1Score, val.player2Score);
-    var maxDetail = "";
 
     switch (filterOutcome) {
       case "PLAYER":
         if (val.player1Score == 0 || val.player2Score == 0) {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
             max = 37 + Number(val.player1Score) + Number(val.player2Score);
-            maxDetail = "37 - Constant + Player1";
           } else {
             max = 49;
             // Not confirmed 42,24,49,30,33
@@ -190,12 +188,31 @@ export const Laddu = () => {
       case "WK":
         if (val.player1Score == 0 || val.player2Score == 0) {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
-            max = 37;
+            max = 37 + Number(val.player1Score) + Number(val.player2Score);
           } else {
-            max = 27 + Number(val.player1Score) + Number(val.player2Score);
+            max = 49;
+            // Not confirmed 42,24,49,30,33
           }
+          //max = 37;
         } else {
-          max = 37 + min;
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            if (val.player1Score >= 27 && val.player2Score >= 27) {
+              max = max + 13;
+            } else {
+              if (
+                (val.player1Score >= 27 && val.player2Score <= 27) ||
+                (val.player2Score >= 27 && val.player1Score <= 27)
+              ) {
+                max = max + 13;
+              } else {
+                max = 27 + max;
+              }
+            }
+          } else {
+            if (Number(val.player1Score) + Number(val.player2Score) >= 27) {
+              max = 27 + max + min;
+            } else max = 27;
+          }
         }
         return max;
         break;

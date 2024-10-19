@@ -536,6 +536,7 @@ table tbody tr.loss {
 .main-card .card .top {
   /* background-color: rgb(178, 186, 187, 0.1); */
   background-color: rgb(206, 217, 235, 0.3);
+  background: linear-gradient(to right, #fff, rgb(206, 217, 235, 0.3));
   /* position: relative;
   left: -16px;
   top: -8px; */
@@ -544,7 +545,7 @@ table tbody tr.loss {
   font-size: 10px;
   font-weight: 500;
   border-radius: 5px 0px 0px 0px;
-  /* border-bottom: 1px solid #ededed; */
+  border-bottom: 1px solid rgb(178, 186, 187, 0.1);
   text-transform: capitalize;
 }
 
@@ -625,6 +626,7 @@ table tbody tr.loss {
   text-align: center;
   font-size: 10px;
   color: rgb(178, 186, 187);
+  border-top: 1px solid rgb(178, 186, 187, 0.1);
 }
 .main-card .card .state:nth-child(1) i {
   font-weight: 500;
