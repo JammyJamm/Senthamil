@@ -10,6 +10,7 @@ import getImages from "../src/assets/images/add.svg";
 import { ReactComponent as Batter } from "../src/assets/images/batter.svg";
 import { ReactComponent as Keeper } from "../src/assets/images/keeper.svg";
 import { ReactComponent as Captain } from "../src/assets/images/captain.svg";
+import { right } from "@popperjs/core";
 export const Laddu = () => {
   const [data, setData] = useState([]);
   const [detail, setDetail] = useState([]);
@@ -150,27 +151,29 @@ export const Laddu = () => {
   const rangeMaxFun = (val) => {
     var max = Math.max(val.player1Score, val.player2Score);
     var min = Math.min(val.player1Score, val.player2Score);
+    var maxDetail = "";
 
     switch (filterOutcome) {
       case "PLAYER":
         if (val.player1Score == 0 || val.player2Score == 0) {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
             max = 37 + Number(val.player1Score) + Number(val.player2Score);
+            maxDetail = "37 - Constant + Player1";
           } else {
             max = 49;
-            // Not confirmed 42,24,49,30,33*
+            // Not confirmed 42,24,49,30,33
           }
           //max = 37;
         } else {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
             if (val.player1Score >= 27 && val.player2Score >= 27) {
-              max = max + 10;
+              max = max + 13;
             } else {
               if (
                 (val.player1Score >= 27 && val.player2Score <= 27) ||
                 (val.player2Score >= 27 && val.player1Score <= 27)
               ) {
-                max = max + 10;
+                max = max + 13;
               } else {
                 max = 27 + max;
               }
@@ -201,14 +204,105 @@ export const Laddu = () => {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
             max = 37;
           } else {
-            // max = 27 + Number(val.player1Score) + Number(val.player2Score);
-            max = 37;
+            max = 27 + Number(val.player1Score) + Number(val.player2Score);
           }
         } else {
-          // max = 37 + min;
-          max = 37;
+          max = 37 + min;
         }
         return max;
+      default:
+        break;
+    }
+  };
+  // Get Detail - const - UNder value
+  const rangeMaxFunConst = (val) => {
+    var max = Math.max(val.player1Score, val.player2Score);
+    var min = Math.min(val.player1Score, val.player2Score);
+    var maxDetail = "";
+
+    switch (filterOutcome) {
+      case "PLAYER":
+        if (val.player1Score == 0 || val.player2Score == 0) {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            max = 37 + Number(val.player1Score) + Number(val.player2Score);
+            maxDetail =
+              "Constant 37 + Player1" +
+              Number(val.player1Score) +
+              Number(val.player2Score);
+          } else {
+            max = 49;
+            maxDetail = "Constant 49";
+            // Not confirmed 42,24,49,30,33
+          }
+          //max = 37;
+        } else {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            if (val.player1Score >= 27 && val.player2Score >= 27) {
+              maxDetail = "PlayerMax " + max + " + Constant 10";
+              max = max + 13;
+            } else {
+              if (
+                (val.player1Score >= 27 && val.player2Score <= 27) ||
+                (val.player2Score >= 27 && val.player1Score <= 27)
+              ) {
+                maxDetail = "PlayerMax " + max + " + Constant 10";
+                max = max + 13;
+              } else {
+                maxDetail = "Constant 27 +" + "PlayerMax " + max;
+                max = 27 + max;
+              }
+            }
+          } else {
+            if (Number(val.player1Score) + Number(val.player2Score) >= 27) {
+              maxDetail =
+                "Constant 27 +" + "PlayerMax " + max + "+ PlayerMin " + min;
+              max = 27 + max + min;
+            } else {
+              maxDetail = "Constant 27";
+              max = 27;
+            }
+          }
+        }
+
+        return maxDetail;
+        break;
+      case "WK":
+        if (val.player1Score == 0 || val.player2Score == 0) {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            maxDetail = "Constant 37";
+            max = 37;
+          } else {
+            maxDetail =
+              "Constant 27 + Player1 " +
+              Number(val.player1Score) +
+              "+ Player2 " +
+              Number(val.player2Score);
+            max = 27 + Number(val.player1Score) + Number(val.player2Score);
+          }
+        } else {
+          maxDetail = "Constant 27 + Player Min " + min;
+          max = 37 + min;
+        }
+        return maxDetail;
+        break;
+      case "CAPTAIN":
+        if (val.player1Score == 0 || val.player2Score == 0) {
+          if (val.player1Score >= 27 || val.player2Score >= 27) {
+            maxDetail = "Constant 37";
+            max = 37;
+          } else {
+            maxDetail =
+              "Constant 27 + Player1 " +
+              Number(val.player1Score) +
+              " Player2 " +
+              Number(val.player2Score);
+            max = 27 + Number(val.player1Score) + Number(val.player2Score);
+          }
+        } else {
+          maxDetail = "Constant 27 + Min " + min;
+          max = 37 + min;
+        }
+        return maxDetail;
       default:
         break;
     }
@@ -393,7 +487,7 @@ export const Laddu = () => {
           {filterData?.map((val, id) => {
             return (
               <div className="card" key={id} data-value={val.id}>
-                <div className="top">
+                <div className="top" style={{ position: "relative" }}>
                   <label
                     style={{
                       whiteSpace: "nowrap",
@@ -402,7 +496,11 @@ export const Laddu = () => {
                     }}
                   >
                     {val.league}
+                    <span style={{ position: "absolute", right: "130px" }}>
+                      {rangeMaxFunConst(val)}
+                    </span>
                   </label>
+
                   <label>
                     <span>
                       <b>Under - {rangeMaxFun(val)}</b>

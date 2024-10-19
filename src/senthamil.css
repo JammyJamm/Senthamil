@@ -569,6 +569,7 @@ table tbody tr.loss {
   transform: skewX(-148deg);
   display: block;
   font-weight: 600;
+  color: green;
 }
 
 /* .main-card .card .top label:nth-child(2) {
