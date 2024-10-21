@@ -11,6 +11,7 @@ import { ReactComponent as Batter } from "../src/assets/images/batter.svg";
 import { ReactComponent as Keeper } from "../src/assets/images/keeper.svg";
 import { ReactComponent as Captain } from "../src/assets/images/captain.svg";
 import { right } from "@popperjs/core";
+import LadduTable from "./LadduTable";
 export const Laddu = () => {
   const [data, setData] = useState([]);
   const [detail, setDetail] = useState([]);
@@ -149,8 +150,10 @@ export const Laddu = () => {
     });
   }, [filterData]);
   const rangeMaxFun = (val) => {
-    var max = Math.max(val.player1Score, val.player2Score);
-    var min = Math.min(val.player1Score, val.player2Score);
+    const player1 = parseInt(val.player1Score.match(/\d+/g));
+    const player2 = parseInt(val.player2Score.match(/\d+/g));
+    var max = Math.max(player1, player2);
+    var min = Math.min(player1, player2);
 
     switch (filterOutcome) {
       case "PLAYER":
@@ -178,9 +181,17 @@ export const Laddu = () => {
             }
           } else {
             if (Number(val.player1Score) + Number(val.player2Score) >= 27) {
-              max = 27 + max + min;
+              max = 30 + max + min;
             } else max = 27;
           }
+        }
+        // Max - 50
+        if (val.player1Score >= 50 || val.player2Score >= 50) {
+          max = 92 - min;
+        }
+        // Max - 100
+        if (val.player1Score >= 100 || val.player2Score >= 100) {
+          max = 102 - min;
         }
 
         return max;
@@ -188,31 +199,43 @@ export const Laddu = () => {
       case "WK":
         if (val.player1Score == 0 || val.player2Score == 0) {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
-            max = 37 + Number(val.player1Score) + Number(val.player2Score);
+            max = 37;
           } else {
-            max = 49;
-            // Not confirmed 42,24,49,30,33
+            max = 27 + Number(val.player1Score) + Number(val.player2Score);
           }
-          //max = 37;
         } else {
-          if (val.player1Score >= 27 || val.player2Score >= 27) {
-            if (val.player1Score >= 27 && val.player2Score >= 27) {
-              max = max + 13;
-            } else {
-              if (
-                (val.player1Score >= 27 && val.player2Score <= 27) ||
-                (val.player2Score >= 27 && val.player1Score <= 27)
-              ) {
-                max = max + 13;
-              } else {
-                max = 27 + max;
-              }
-            }
-          } else {
-            if (Number(val.player1Score) + Number(val.player2Score) >= 27) {
-              max = 27 + max + min;
-            } else max = 27;
-          }
+          max = 37 + min;
+        }
+        // Max - 20
+
+        if (player1 >= 20 || player2 >= 20) {
+          max = 106 - max;
+        } // Max - 30
+        if (Number(val.player1Score) >= 30 || Number(val.player2Score) >= 30) {
+          max = 105 - max;
+        }
+        // Max - 40
+        if (Number(val.player1Score) >= 40 || Number(val.player2Score) >= 40) {
+          max = 105 - max;
+        }
+        // Max - 50
+        if (Number(val.player1Score) >= 50 || Number(val.player2Score) >= 50) {
+          max = 105 - max;
+        }
+        // Max - 60
+        if (Number(val.player1Score) >= 60 || Number(val.player2Score) >= 60) {
+          max = 105 - max;
+        }
+        // Max - 70
+        if (Number(val.player1Score) >= 70 || Number(val.player2Score) >= 70) {
+          max = 108 - max;
+        }
+        // Max - 100
+        if (
+          Number(val.player1Score) >= 100 ||
+          Number(val.player2Score) >= 100
+        ) {
+          max = 102 - min;
         }
         return max;
         break;
@@ -639,6 +662,7 @@ export const Laddu = () => {
           })}
         </div>
       </div>
+      <LadduTable />
     </>
   );
 };
