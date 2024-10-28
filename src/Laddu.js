@@ -199,90 +199,62 @@ export const Laddu = () => {
       case "WK":
         if (val.player1Score == 0 || val.player2Score == 0) {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
-            max = 37;
+            max = 37 + 10;
           } else {
-            max = 27 + Number(val.player1Score) + Number(val.player2Score);
+            max = 37 + Number(val.player1Score) + Number(val.player2Score);
           }
         } else {
-          // max = 37 + min;
-
-          // Max - 20
-
-          if (
-            (player1 > 10 && player1 <= 20) ||
-            (player2 > 10 && player2 <= 20)
-          ) {
+          // Max 10 to 20
+          if (max > 10 && max <= 20) {
             max = 106 - max;
-          } // Max - 30
-          if (
-            (player1 > 20 && player1 <= 30) ||
-            (player2 > 20 && player2 <= 30)
-          ) {
-            console.log(max);
-            max = 105 - max;
           }
-          // Max - 40
-          if (
-            (player1 > 30 && player1 <= 40) ||
-            (player2 > 30 && player2 <= 40)
-          ) {
-            max = 105 - max;
+          // Max 20 to 30
+          if (max > 20 && max <= 30) {
+            max = 106 - max;
           }
-          // Max - 50
-          if (
-            (player1 > 40 && player1 <= 50) ||
-            (player2 > 40 && player2 <= 50)
-          ) {
-            max = 116 - max;
+          // Max 30 to 40
+          if (max > 30 && max <= 40) {
+            max = 114 - max;
           }
-          // Max - 60
-          if (
-            (player1 > 50 && player1 <= 60) ||
-            (player2 > 50 && player2 <= 60)
-          ) {
-            max = 105 - max;
+          // // Max 40 to 50
+          if (max > 40 && max <= 50) {
+            max = 106 - max;
           }
-          // Max - 70 - Need to reduce
-          if (
-            (player1 > 60 && player1 <= 70) ||
-            (player2 > 60 && player2 <= 70)
-          ) {
-            max = 108 - max;
+          // // Max 50 to 60
+          if (max > 50 && max <= 60) {
+            max = 122 - max;
           }
-          // Max - 80
-          if (
-            (player1 > 70 && player1 <= 80) ||
-            (player2 > 70 && player2 <= 80)
-          ) {
-            max = 102 - max;
-          }
-          // Max - 90
-          if (
-            (player1 > 80 && player1 <= 90) ||
-            (player2 > 80 && player2 <= 90)
-          ) {
-            max = 102 - max;
-          }
-          // Max - 100
-          if (
-            (player1 > 90 && player1 <= 120) ||
-            (player2 > 90 && player2 <= 120)
-          ) {
-            max = 102 - min;
+          // // Max 60 to 70
+          // if (max > 60 && max <= 70) {
+          //   max = 106 - max;
+          // }
+          // // Max 70 to 80
+          // if (max > 70 && max <= 80) {
+          //   max = 106 - max;
+          // }
+          // // Max 80 to 90
+          // if (max > 80 && max <= 90) {
+          //   max = 106 - max;
+          // }
+          // // Max 90 to 100
+          // if (max > 90 && max <= 100) {
+          //   max = 106 - max;
+          // }
+          // Max Above 100
+          if (max > 100) {
+            max = 37;
           }
         }
         return max;
         break;
       case "CAPTAIN":
-        // if (val.player1Score == 0 || val.player2Score == 0) {
-        //   if (val.player1Score >= 27 || val.player2Score >= 27) {
-        //     max = 37;
-        //   } else {
-        //     max = 27 + Number(val.player1Score) + Number(val.player2Score);
-        //   }
-        // } else {
-        //   max = 37 + min;
-        // }
+        if (val.player1Score >= 37 || val.player2Score >= 37) {
+          //max = 37 + Number(val.player1Score) + Number(val.player2Score);
+          max = 70;
+        } else {
+          max = 37;
+        }
+
         return max;
       default:
         break;

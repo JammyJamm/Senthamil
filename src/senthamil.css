@@ -4,6 +4,9 @@ html {
   margin: 0px;
   box-sizing: border-box;
 }
+html {
+  background-color: #fff;
+}
 
 body {
   margin: 0;
