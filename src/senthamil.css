@@ -634,6 +634,7 @@ table tbody tr.loss {
 .main-card .card .bottom {
   /* border-top: 1px solid #ededed; */
   padding: 4px 8px;
+  border-top: 1px solid rgb(178, 186, 187, 0.1);
 }
 .main-card .card .bottom label:nth-child(2) {
   display: flex;
@@ -641,7 +642,6 @@ table tbody tr.loss {
   text-align: center;
   font-size: 10px;
   color: rgb(178, 186, 187);
-  border-top: 1px solid rgb(178, 186, 187, 0.1);
 }
 .main-card .card .state:nth-child(1) i {
   font-weight: 500;
