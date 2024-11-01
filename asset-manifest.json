@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Senthamil/static/css/main.05fcc16b.css",
-    "main.js": "/Senthamil/static/js/main.77a84aa1.js",
+    "main.js": "/Senthamil/static/js/main.2b3430e1.js",
     "static/media/Background.png": "/Senthamil/static/media/Background.c689ab74dd105dd98e47.png",
     "static/media/fire.png": "/Senthamil/static/media/fire.ca6f58e8fe4a83738fdb.png",
     "static/media/fire1.png": "/Senthamil/static/media/fire1.27267b60fde5323987ef.png",
@@ -16,10 +16,10 @@
     "static/media/back.svg": "/Senthamil/static/media/back.3e378093a758ece35dff534791644cdf.svg",
     "static/media/google.svg": "/Senthamil/static/media/google.b152d906a55299353c8180ac2d8a0324.svg",
     "main.05fcc16b.css.map": "/Senthamil/static/css/main.05fcc16b.css.map",
-    "main.77a84aa1.js.map": "/Senthamil/static/js/main.77a84aa1.js.map"
+    "main.2b3430e1.js.map": "/Senthamil/static/js/main.2b3430e1.js.map"
   },
   "entrypoints": [
     "static/css/main.05fcc16b.css",
-    "static/js/main.77a84aa1.js"
+    "static/js/main.2b3430e1.js"
   ]
 }
