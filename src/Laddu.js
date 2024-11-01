@@ -20,7 +20,7 @@ export const Laddu = () => {
   const [filterScore, setFilterScore] = useState(0);
   const [rangeMin, setRangeMin] = useState(0);
   const [rangeMax, setRangeMax] = useState(0);
-  const [filterLeague, setFilterLeague] = useState("IPL");
+  const [filterLeague, setFilterLeague] = useState("BPL_W");
   const [underScore, setUnderScore] = useState(0);
   const [searchVal, setSearchVal] = useState([
     {
@@ -86,9 +86,11 @@ export const Laddu = () => {
         data.filter((list) => {
           return (
             (list.player2Role.toUpperCase() == "CAPTAIN" &&
-              list.league.toUpperCase() == league) ||
+              list.league.toUpperCase() == league &&
+              list.player1Role.toUpperCase() == "PLAYER") ||
             (list.player1Role.toUpperCase() == "CAPTAIN" &&
-              list.league.toUpperCase() == league)
+              list.league.toUpperCase() == league &&
+              list.player2Role.toUpperCase() == "PLAYER")
           );
         })
       );
@@ -99,9 +101,26 @@ export const Laddu = () => {
         data.filter((list) => {
           return (
             (list.player2Role.toUpperCase() == "WK" &&
-              list.league.toUpperCase() == league) ||
+              list.league.toUpperCase() == league &&
+              list.player1Role.toUpperCase() == "PLAYER") ||
             (list.player1Role.toUpperCase() == "WK" &&
-              list.league.toUpperCase() == league)
+              list.league.toUpperCase() == league &&
+              list.player2Role.toUpperCase() == "PLAYER")
+          );
+        })
+      );
+    }
+    if (role == "CAP_WK") {
+      setFilterScore(37);
+      setFilterData(
+        data.filter((list) => {
+          return (
+            (list.player2Role.toUpperCase() == "WK" &&
+              list.league.toUpperCase() == league &&
+              list.player1Role.toUpperCase() == "CAPTAIN") ||
+            (list.player1Role.toUpperCase() == "WK" &&
+              list.league.toUpperCase() == league &&
+              list.player2Role.toUpperCase() == "CAPTAIN")
           );
         })
       );
@@ -159,7 +178,7 @@ export const Laddu = () => {
       case "PLAYER":
         if (val.player1Score == 0 || val.player2Score == 0) {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
-            max = 37 + Number(val.player1Score) + Number(val.player2Score);
+            max = 27 + Number(val.player1Score) + Number(val.player2Score);
           } else {
             max = 49;
             // Not confirmed 42,24,49,30,33
@@ -168,7 +187,7 @@ export const Laddu = () => {
         } else {
           if (val.player1Score >= 27 || val.player2Score >= 27) {
             if (val.player1Score >= 27 && val.player2Score >= 27) {
-              max = max + 13;
+              max = max + 31;
             } else {
               if (
                 (val.player1Score >= 27 && val.player2Score <= 27) ||
@@ -187,7 +206,7 @@ export const Laddu = () => {
         }
         // Max - 50
         if (val.player1Score >= 50 || val.player2Score >= 50) {
-          max = 92 - min;
+          max = 95 - min;
         }
         // Max - 100
         if (val.player1Score >= 100 || val.player2Score >= 100) {
@@ -253,6 +272,19 @@ export const Laddu = () => {
           max = 70;
         } else {
           max = 37;
+        }
+
+        return max;
+      case "CAP_WK":
+        if (max >= 70) {
+          max = 130 - max;
+        } else {
+          if (val.player1Score >= 37 || val.player2Score >= 37) {
+            //max = 37 + Number(val.player1Score) + Number(val.player2Score);
+            max = 70;
+          } else {
+            max = 37;
+          }
         }
 
         return max;
@@ -440,6 +472,15 @@ export const Laddu = () => {
               <Captain />
               {/* <label className="captain"></label> */}
               <span>Captain</span>
+            </button>
+            <button
+              className={filterOutcome == "CAP_WK" ? "selected" : ""}
+              onClick={() => handleNav("CAP_WK", filterLeague)}
+              style={{ padding: "0px" }}
+            >
+              <Captain />
+              {/* <label className="captain"></label> */}
+              <span>Cap/Wk</span>
             </button>
           </div>
         </div>

@@ -125,7 +125,7 @@ export const LadduAdd = () => {
                     className="form-control"
                     name="league"
                     required
-                    value={"IPL"}
+                    value={"BPL_W"}
                     onChange={handleChange}
                   />
                 </div>
